@@ -1,0 +1,187 @@
+import React, { useEffect } from 'react';
+import { Prize, Winner } from '../types';
+import { X, Sparkles, Check, RefreshCcw } from 'lucide-react';
+import confetti from 'canvas-confetti';
+
+interface CelebrationModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onReject?: () => void; // Function to handle "Skip/Redraw"
+  winner: Winner | null;
+  prize: Prize;
+  winnersCount: number;
+}
+
+export const CelebrationModal: React.FC<CelebrationModalProps> = ({
+  isOpen, onClose, onReject, winner, prize, winnersCount
+}) => {
+  const isGrandPrize = prize.quantity === 1;
+
+  useEffect(() => {
+    if (isOpen) {
+      // Trigger confetti
+      const duration = isGrandPrize ? 5000 : 3000;
+      const end = Date.now() + duration;
+
+      const frame = () => {
+        confetti({
+          particleCount: isGrandPrize ? 8 : 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: isGrandPrize ? ['#FFD700', '#FFFFFF'] : ['#FFD700', '#FFA500']
+        });
+        confetti({
+          particleCount: isGrandPrize ? 8 : 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: isGrandPrize ? ['#FFD700', '#FFFFFF'] : ['#FFD700', '#FFA500']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+      frame();
+    }
+  }, [isOpen, isGrandPrize]);
+
+  if (!isOpen || !winner) return null;
+
+  // --- GRAND PRIZE LAYOUT (Dark, Epic, Single Winner) ---
+  if (isGrandPrize) {
+    return (
+      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 backdrop-blur-xl animate-in fade-in duration-500">
+        
+        {/* Abstract Background Effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yep-gold/10 rounded-full blur-[100px] animate-pulse"></div>
+           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cube-coat.png')] opacity-10"></div>
+        </div>
+
+        <div className="relative w-full max-w-5xl text-center px-4 flex flex-col items-center">
+          
+          <h3 className="text-white/60 font-display uppercase tracking-[0.3em] text-lg md:text-2xl mb-8 animate-in slide-in-from-top-10 duration-700">
+            CHÚC MỪNG
+          </h3>
+
+          {/* Huge Code Watermark */}
+          <div className="relative mb-6">
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] md:text-[18rem] font-black text-white/5 select-none leading-none z-0">
+                {winner.participant.code.slice(-1)}
+             </div>
+             
+             <div className="relative z-10">
+                <div className="text-6xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yep-gold via-yellow-200 to-yep-gold drop-shadow-[0_0_30px_rgba(255,215,0,0.6)] font-mono tracking-wider mb-4 animate-in zoom-in duration-500">
+                   {winner.participant.code}
+                </div>
+                
+                <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tight drop-shadow-2xl mb-4 animate-in slide-in-from-bottom-10 duration-700 delay-100">
+                  {winner.participant.name}
+                </h1>
+                
+                <div className="w-32 h-1 bg-gradient-to-r from-transparent via-yep-gold to-transparent mx-auto mb-6"></div>
+                
+                <p className="text-2xl md:text-3xl text-gray-300 font-display font-light tracking-wide uppercase">
+                  {winner.participant.department}
+                </p>
+             </div>
+          </div>
+
+          <div className="mt-8 mb-12">
+             <span className="text-yep-gold/80 italic font-serif text-lg">đã trúng</span>
+             <h2 className="text-4xl md:text-5xl font-black text-yep-gold uppercase mt-2 tracking-widest drop-shadow-lg">
+                {prize.name}
+             </h2>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-6 z-20">
+             {onReject && (
+               <button 
+                 onClick={onReject}
+                 className="px-8 py-3 rounded border border-white/20 text-white/60 hover:text-white hover:border-white hover:bg-white/5 transition uppercase font-bold text-sm tracking-widest flex items-center gap-2"
+               >
+                 <RefreshCcw size={16}/> Bỏ qua
+               </button>
+             )}
+             
+             <button 
+               onClick={onClose}
+               className="bg-gradient-to-r from-yep-gold to-orange-500 text-red-950 px-12 py-3 rounded font-black uppercase tracking-widest hover:scale-105 transition shadow-[0_0_30px_rgba(255,215,0,0.4)] flex items-center gap-2"
+             >
+               <Check size={20} strokeWidth={3}/> XÁC NHẬN
+             </button>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  // --- STANDARD LAYOUT (Festive, Multiple Winners) ---
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
+      <div className="absolute top-4 right-4">
+        <button onClick={onClose} className="text-white/50 hover:text-white transition p-2 bg-white/10 rounded-full">
+          <X size={24} />
+        </button>
+      </div>
+
+      <div className="w-full max-w-4xl text-center px-4">
+        {/* Badge */}
+        <div className="inline-block bg-gradient-to-r from-yep-gold to-orange-500 px-6 py-2 rounded-full mb-8 shadow-glow animate-bounce-gentle">
+          <span className="text-red-900 font-black uppercase tracking-widest text-lg md:text-xl">
+            {prize.name}
+          </span>
+        </div>
+
+        <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-300 uppercase drop-shadow-[0_5px_15px_rgba(255,215,0,0.5)] mb-2">
+          CHÚC MỪNG NGƯỜI TRÚNG GIẢI
+        </h1>
+        
+        <p className="text-yep-gold/80 font-mono text-sm md:text-base mb-12 uppercase tracking-widest">
+          Lượt quay #{winnersCount} • Đã trao {winnersCount} / {prize.quantity} giải cho hạng mục này
+        </p>
+
+        {/* Winner Card */}
+        <div className="bg-gradient-to-br from-yep-gold via-orange-400 to-yep-gold p-[2px] rounded-2xl shadow-[0_0_50px_rgba(255,140,0,0.4)] transform hover:scale-105 transition duration-500">
+          <div className="bg-[#1a0505] rounded-2xl p-8 md:p-12 relative overflow-hidden">
+             {/* Decorative Background */}
+             <div className="absolute top-0 right-0 w-64 h-64 bg-yep-gold/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+             
+             <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-yep-gold rounded-full flex items-center justify-center border-4 border-white/20 shadow-inner">
+                   <Sparkles size={48} className="text-red-900" />
+                </div>
+                
+                <div className="flex-1 text-center md:text-left">
+                   <div className="bg-white/10 inline-block px-3 py-1 rounded text-xs text-yep-gold font-mono mb-2 border border-white/5">
+                      {winner.participant.code}
+                   </div>
+                   <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-none mb-3">
+                     {winner.participant.name}
+                   </h2>
+                   <p className="text-xl md:text-2xl text-yep-gold font-medium">
+                     {winner.participant.department}
+                   </p>
+                   {winner.participant.yearsWorked > 0 && (
+                     <p className="text-white/40 text-sm mt-2">Thâm niên: {winner.participant.yearsWorked} năm</p>
+                   )}
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <button 
+          onClick={onClose}
+          className="mt-12 bg-white text-red-900 font-black px-12 py-4 rounded-full text-lg uppercase hover:bg-gray-100 transition shadow-lg active:scale-95"
+        >
+          Đóng & Tiếp tục
+        </button>
+
+      </div>
+    </div>
+  );
+};
