@@ -157,6 +157,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     Xóa tất cả
                   </button>
                 </div>
+                <div className="bg-blue-50 border border-blue-200 p-3 rounded text-xs text-blue-700 mb-3">
+                  <strong>📌 Lưu ý:</strong> Người đã trúng giải sẽ <strong>KHÔNG</strong> được quay lại ở bất cứ giải nào. Bạn có thể xóa người tham gia bằng nút <Trash2 className="inline" size={12}/> bên phải.
+                </div>
                 <div className="max-h-60 overflow-y-auto">
                   <table className="w-full text-sm text-left">
                     <thead className="bg-gray-50 text-gray-500 sticky top-0">
@@ -165,21 +168,32 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         <th className="p-2">Họ và Tên</th>
                         <th className="p-2">Khoa Phòng</th>
                         <th className="p-2 text-center">Thâm niên (năm)</th>
+                        <th className="p-2 text-center">Trạng thái</th>
                         <th className="p-2"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {participants.map(p => (
-                        <tr key={p.id} className="border-b hover:bg-gray-50">
-                          <td className="p-2 font-mono text-gray-600">{p.code}</td>
-                          <td className="p-2 font-bold text-gray-800">{p.name}</td>
-                          <td className="p-2 text-gray-500">{p.department}</td>
-                          <td className="p-2 text-center font-bold text-yep-red">{p.yearsWorked}</td>
-                          <td className="p-2 text-right">
-                             <button onClick={() => setParticipants(participants.filter(x => x.id !== p.id))} className="text-gray-400 hover:text-red-600"><Trash2 size={14}/></button>
-                          </td>
-                        </tr>
-                      ))}
+                      {participants.map(p => {
+                        const hasWon = winners.some(w => w.participantId === p.id);
+                        return (
+                          <tr key={p.id} className={`border-b hover:bg-gray-50 ${hasWon ? 'bg-green-50' : ''}`}>
+                            <td className="p-2 font-mono text-gray-600">{p.code}</td>
+                            <td className="p-2 font-bold text-gray-800">{p.name}</td>
+                            <td className="p-2 text-gray-500">{p.department}</td>
+                            <td className="p-2 text-center font-bold text-yep-red">{p.yearsWorked}</td>
+                            <td className="p-2 text-center">
+                              {hasWon ? (
+                                <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">✓ Đã trúng</span>
+                              ) : (
+                                <span className="text-gray-400 text-xs">Chưa trúng</span>
+                              )}
+                            </td>
+                            <td className="p-2 text-right">
+                               <button onClick={() => setParticipants(participants.filter(x => x.id !== p.id))} className="text-gray-400 hover:text-red-600"><Trash2 size={14}/></button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

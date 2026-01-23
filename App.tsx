@@ -362,10 +362,10 @@ const App: React.FC = () => {
       <main className="flex-1 flex flex-col items-center justify-center p-4 relative z-10 w-full max-w-6xl mx-auto -mt-6">
         {/* Title Group */}
         <div className="text-center mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
-          <div className="inline-flex items-center gap-2 mb-2 bg-black/20 backdrop-blur px-4 py-1 rounded-full border border-white/10">
-            <Trophy size={16} className="text-yep-gold" />
-            <span className="text-xs font-bold tracking-widest text-yep-gold uppercase">
-              Bắc Hà Hospital YEP 2025
+          <div className="inline-flex items-center gap-2 mb-6 bg-black/20 backdrop-blur px-6 py-2 rounded-full border border-white/10">
+            <Trophy size={20} className="text-yep-gold" />
+            <span className="text-sm md:text-base font-bold tracking-widest text-yep-gold uppercase">
+              BỆNH VIỆN ĐA KHOA QUỐC TẾ BẮC HÀ - YEP 2026
             </span>
           </div>
           <h1 className="text-3xl md:text-5xl font-display font-black uppercase text-yep-gold drop-shadow-lg tracking-tighter mb-2">

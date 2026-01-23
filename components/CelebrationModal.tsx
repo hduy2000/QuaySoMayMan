@@ -129,7 +129,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
         </button>
       </div>
 
-      <div className="w-full max-w-4xl text-center px-4">
+      <div className="w-full max-w-6xl text-center px-4">
         {/* Badge */}
         <div className="inline-block bg-gradient-to-r from-yep-gold to-orange-500 px-6 py-2 rounded-full mb-8 shadow-glow animate-bounce-gentle">
           <span className="text-red-900 font-black uppercase tracking-widest text-lg md:text-xl">
@@ -146,21 +146,21 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
         </p>
 
         {/* Winner Card */}
-        <div className="bg-gradient-to-br from-yep-gold via-orange-400 to-yep-gold p-[2px] rounded-2xl shadow-[0_0_50px_rgba(255,140,0,0.4)] transform hover:scale-105 transition duration-500">
-          <div className="bg-[#1a0505] rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-yep-gold via-orange-400 to-yep-gold p-[2px] rounded-2xl shadow-[0_0_50px_rgba(255,140,0,0.4)] transform hover:scale-105 transition duration-500 w-full max-w-6xl mx-auto">
+          <div className="bg-[#1a0505] rounded-2xl p-8 md:p-16 relative overflow-hidden">
              {/* Decorative Background */}
              <div className="absolute top-0 right-0 w-64 h-64 bg-yep-gold/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
              
-             <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-yep-gold rounded-full flex items-center justify-center border-4 border-white/20 shadow-inner">
+             <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-yep-gold rounded-full flex items-center justify-center border-4 border-white/20 shadow-inner flex-shrink-0">
                    <Sparkles size={48} className="text-red-900" />
                 </div>
                 
                 <div className="flex-1 text-center md:text-left">
-                   <div className="bg-white/10 inline-block px-3 py-1 rounded text-xs text-yep-gold font-mono mb-2 border border-white/5">
+                   <div className="bg-white/10 inline-block px-3 py-1 rounded text-4xl text-yep-gold font-mono mb-2 border border-white/5">
                       {winner.participant.code}
                    </div>
-                   <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-none mb-3">
+                   <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight mb-3">
                      {winner.participant.name}
                    </h2>
                    <p className="text-xl md:text-2xl text-yep-gold font-medium">
