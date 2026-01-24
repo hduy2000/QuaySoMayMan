@@ -189,7 +189,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                               )}
                             </td>
                             <td className="p-2 text-right">
-                               <button onClick={() => setParticipants(participants.filter(x => x.id !== p.id))} className="text-gray-400 hover:text-red-600"><Trash2 size={14}/></button>
+                               <button onClick={() => setParticipants(participants.filter(x => x.id !== p.id))} className="text-red-600"><Trash2 size={14}/></button>
                             </td>
                           </tr>
                         );
@@ -296,7 +296,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                             <td className="p-3 text-right">
                               <button 
                                 onClick={() => setWinners(winners.filter(x => x.id !== w.id))}
-                                className="text-gray-300 hover:text-red-600 p-2"
+                                className="text-red-600"
                               >
                                 <Trash2 size={16}/>
                               </button>

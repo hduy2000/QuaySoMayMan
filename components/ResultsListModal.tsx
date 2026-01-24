@@ -77,9 +77,7 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
 
   const handleExport = () => {
      const data = displayedWinners.map(w => {
-         const p = prizes.find(pz => pz.id === w.prizeId);
          return {
-             'Giải thưởng': p?.name,
              'Mã NV': w.participant.code,
              'Họ tên': w.participant.name,
              'Bộ phận': w.participant.department,
@@ -151,10 +149,9 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
         {/* List */}
         <div className="flex-1 overflow-y-auto p-0">
           <table className="w-full text-sm text-left">
-            <thead className="bg-gray-100 text-gray-600 sticky top-0 z-10 uppercase text-xs font-bold">
+            <thead className="bg-gray-100 text-gray-900 sticky top-0 z-10 uppercase text-xs font-black">
               <tr>
                 <th className="p-4">STT</th>
-                <th className="p-4">Giải thưởng</th>
                 <th className="p-4">Mã NV</th>
                 <th className="p-4">Họ và Tên</th>
                 <th className="p-4">Bộ phận</th>
@@ -164,31 +161,43 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
             <tbody className="divide-y">
               {displayedWinners.length === 0 ? (
                  <tr>
-                    <td colSpan={6} className="p-12 text-center text-gray-400 italic">Chưa có dữ liệu</td>
+                    <td colSpan={5} className="p-12 text-center text-gray-400 italic">Chưa có dữ liệu</td>
                  </tr>
               ) : (
                 displayedWinners.map((w, index) => {
                   const prize = prizes.find(p => p.id === w.prizeId);
-                  const isGrandPrize = w.prizeId === 'p_dacbiet';
+
+                  const getPrizeRowClass = (prizeId: string) => {
+                    switch (prizeId) {
+                      case 'p_dacbiet': return 'bg-yep-gold/20 hover:bg-yep-gold/30';
+                      case 'p_nhat': return 'bg-blue-100/50 hover:bg-blue-200/50';
+                      case 'p_nhi': return 'bg-green-100/50 hover:bg-green-200/50';
+                      default: return 'hover:bg-gray-50';
+                    }
+                  };
+
+                  const getPrizeBadgeClass = (prizeId: string) => {
+                    switch (prizeId) {
+                      case 'p_dacbiet': return 'bg-gradient-to-r from-red-600 to-red-800 text-white';
+                      case 'p_nhat': return 'bg-gradient-to-r from-blue-600 to-blue-800 text-white';
+                      case 'p_nhi': return 'bg-gradient-to-r from-green-600 to-green-800 text-white';
+                      default: return 'bg-gradient-to-r from-yellow-400 to-orange-400 text-white';
+                    }
+                  };
                   
                   return (
                     <tr 
                       key={w.id} 
-                      className={`group transition-colors ${isGrandPrize ? 'bg-yep-gold/20 hover:bg-yep-gold/30' : 'hover:bg-blue-50'}`}
+                      className={`group transition-colors ${getPrizeRowClass(w.prizeId)}`}
                     >
                       <td className="p-4 text-gray-500 font-mono">{index + 1}</td>
-                      <td className="p-4">
-                         <span className={`px-3 py-1.5 rounded-lg text-xs font-bold shadow-md text-white ${isGrandPrize ? 'bg-gradient-to-r from-red-600 to-red-800' : 'bg-gradient-to-r from-yellow-400 to-orange-400'}`}>
-                           {prize?.name}
-                         </span>
-                      </td>
                       <td className="p-4 font-mono text-gray-600 font-bold">{w.participant.code}</td>
                       <td className="p-4 font-bold text-gray-800 text-base">{w.participant.name}</td>
                       <td className="p-4 text-gray-500">{w.participant.department}</td>
                       <td className="p-4 text-center">
                          <button 
                            onClick={() => handleDelete(w.id, w.participant.name)}
-                           className="text-red-500 bg-red-50 p-2 rounded opacity-0 group-hover:opacity-100 transition-all hover:bg-red-100 hover:scale-110 shadow-sm"
+                           className="text-red-500 bg-red-50 p-2 rounded transition-all hover:bg-red-100 hover:scale-110 shadow-sm"
                            title="Xóa kết quả này"
                          >
                            <Trash2 size={16}/>

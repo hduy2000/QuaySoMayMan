@@ -21,7 +21,7 @@ import {
 
 // AUDIO CONFIGURATION
 const AUDIO_PATHS = {
-  COMING: "/sounds/game-sm-jackpot-coming.mp3", // game-sm-jackpot-coming (Nhạc nền quay)
+  COMING: "/sounds/nhac.mp3", // game-sm-jackpot-coming (Nhạc nền quay)
   ROLLER: "/sounds/sm-roller-loop.mp3", // sm-roller-loop (Số cuối)
   WIN: "/sounds/game-sm-jackpot-win.mp3", // game-sm-jackpot-win (Chốt giải)
   CHEER: "/sounds/crowd-cheer-in-school.mp3", // cheer (Bắn pháo hoa)
@@ -405,7 +405,7 @@ const App: React.FC = () => {
       <img 
         src="/images/logo.png" 
         alt="Logo" 
-        className="absolute top-6 left-6 z-50 h-16 w-auto mix-blend-lighten"
+        className="absolute top-6 left-6 z-50 h-32 w-32"
       />
 
       {/* --- Background Image --- */}
@@ -525,9 +525,11 @@ const App: React.FC = () => {
                   </div>
                 </>
               ) : (
-                <div className="text-xl text-white/50 uppercase font-bold tracking-widest mt-4">
-                  Sẵn sàng
-                </div>
+                isPrizeFinished ? null : (
+                  <div className="text-xl text-white/50 uppercase font-bold tracking-widest mt-4">
+                    Sẵn sàng
+                  </div>
+                )
               )}
             </div>
           </div>
@@ -559,13 +561,9 @@ const App: React.FC = () => {
                 {isSpinning ? "Đang quay..." : "BẮT ĐẦU"}
               </button>
             )
-          ) : (
-            <div className="bg-black/30 px-8 py-3 rounded-full border border-white/10 text-gray-300 font-bold backdrop-blur italic">
-              Đã hoàn tất trao giải này
-            </div>
-          )}
+          ) : null}
 
-          <div className="mt-6 text-white/70 font-medium text-sm md:text-base bg-black/20 inline-block px-4 py-1 rounded-full backdrop-blur-sm">
+          <div className="mt-6 text-white/70 font-medium text-lg md:text-xl bg-black/20 inline-block px-4 py-1 rounded-full backdrop-blur-sm">
             Đã quay{" "}
             <span className="text-yep-gold font-bold">
               {currentWinners.length}
