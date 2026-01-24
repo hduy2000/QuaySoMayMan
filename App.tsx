@@ -16,6 +16,7 @@ import {
   Users,
   List,
   Github,
+  Hourglass,
 } from "lucide-react";
 
 // AUDIO CONFIGURATION
@@ -52,6 +53,8 @@ const App: React.FC = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [lastWinner, setLastWinner] = useState<Winner | null>(null);
   const [audioEnabled, setAudioEnabled] = useState(true);
+  const [isSuspenseMode, setIsSuspenseMode] = useState(false);
+  const [isSpinPaused, setIsSpinPaused] = useState(false);
 
   // --- Refs for Audio & Timers ---
   const spinIntervalRef = useRef<number | null>(null);
@@ -75,6 +78,8 @@ const App: React.FC = () => {
     winners,
     currentPrize,
   );
+
+  // console.log(`[DEBUG] Danh sách đủ điều kiện quay "${currentPrize.name}":`, eligibleParticipants);
 
   // --- Effects ---
 
@@ -142,6 +147,44 @@ const App: React.FC = () => {
 
   // --- Handlers ---
 
+  const handleContinueSpin = () => {
+    if (!targetWinner) return;
+
+    setIsSpinPaused(false);
+
+    // Restart audio for tension
+    if (audioEnabled && audioRollerRef.current) {
+      stopAllLoopingSounds();
+      audioRollerRef.current.play().catch(() => {});
+    }
+
+    const totalDigits = 5;
+    const stepDelay = 800;
+
+    // Reveal digits 3, 4
+    setTimeout(() => {
+      setRevealedCount(3);
+      if (audioEnabled && audioClickRef.current) {
+        audioClickRef.current.currentTime = 0;
+        audioClickRef.current.play().catch(() => {});
+      }
+    }, stepDelay * 1);
+    
+    setTimeout(() => {
+      setRevealedCount(4);
+      if (audioEnabled && audioClickRef.current) {
+        audioClickRef.current.currentTime = 0;
+        audioClickRef.current.play().catch(() => {});
+      }
+    }, stepDelay * 2);
+
+    // Reveal digit 5 and finalize
+    setTimeout(() => {
+      setRevealedCount(5);
+      setTimeout(() => finalizeSpin(targetWinner), 500);
+    }, stepDelay * 3);
+  };
+
   const handleSpin = () => {
     if (isSpinning || isPrizeFinished) return;
     if (eligibleParticipants.length === 0) {
@@ -152,6 +195,8 @@ const App: React.FC = () => {
     // 1. Determine Winner Immediately
     const finalParticipant = getRandomParticipant(eligibleParticipants);
     if (!finalParticipant) return;
+
+    // console.log("[DEBUG] Người may mắn được chọn ngẫu nhiên:", finalParticipant);
 
     const newWinner: Winner = {
       id: Date.now().toString(),
@@ -164,10 +209,11 @@ const App: React.FC = () => {
     // 2. Setup State
     setTargetWinner(newWinner);
     setIsSpinning(true);
+    setIsSpinPaused(false);
     setRevealedCount(0);
     setShowCelebration(false);
 
-    // 3. Start Intro Audio (game-sm-jackpot-coming)
+    // 3. Start Intro Audio
     if (audioEnabled && audioComingRef.current) {
       stopAllLoopingSounds();
       audioComingRef.current.play().catch(() => {});
@@ -184,40 +230,65 @@ const App: React.FC = () => {
     const initialDelay = 2000; // Spin fully for 2s
     const stepDelay = 800; // Time between digits
 
-    // Schedule the stops
-    for (let i = 1; i <= totalDigits; i++) {
+    // Check if we use the suspenseful, pausable logic
+    if (isSuspenseMode) {
+      // --- PAUSABLE LOGIC ---
+      // Reveal first 2 digits then pause
+      for (let i = 1; i <= 2; i++) {
+        setTimeout(
+          () => {
+            setRevealedCount(i);
+            if (audioEnabled && audioClickRef.current) {
+              audioClickRef.current.currentTime = 0;
+              audioClickRef.current.play().catch(() => {});
+            }
+          },
+          initialDelay + i * stepDelay,
+        );
+      }
+
+      // Set up the pause
       setTimeout(
         () => {
-          setRevealedCount(i);
+          setIsSpinPaused(true);
+          // Stop the background chaos sound
+          stopAudio(audioComingRef);
+        },
+        initialDelay + 2 * stepDelay + 100,
+      );
+    } else {
+      // --- ORIGINAL LOGIC ---
+      // Schedule all digit reveals
+      for (let i = 1; i <= totalDigits; i++) {
+        setTimeout(
+          () => {
+            setRevealedCount(i);
 
-          // LOGIC AUDIO:
-          if (audioEnabled) {
-            // If it's the 4th digit (index 4), we are about to reveal the LAST digit.
-            // Stop intro music, Start tension music (sm-roller-loop)
-            if (i === totalDigits - 1) {
-              stopAudio(audioComingRef);
-              if (audioRollerRef.current)
-                audioRollerRef.current.play().catch(() => {});
-            } else if (i < totalDigits) {
-              // Normal tick for digits 1, 2, 3
-              if (audioClickRef.current) {
-                audioClickRef.current.currentTime = 0;
-                audioClickRef.current.play().catch(() => {});
+            if (audioEnabled) {
+              if (i === totalDigits - 1) {
+                stopAudio(audioComingRef);
+                if (audioRollerRef.current)
+                  audioRollerRef.current.play().catch(() => {});
+              } else if (i < totalDigits) {
+                if (audioClickRef.current) {
+                  audioClickRef.current.currentTime = 0;
+                  audioClickRef.current.play().catch(() => {});
+                }
               }
             }
-          }
+          },
+          initialDelay + i * stepDelay,
+        );
+      }
+
+      // 6. Finalize (After last digit)
+      setTimeout(
+        () => {
+          finalizeSpin(newWinner);
         },
-        initialDelay + i * stepDelay,
+        initialDelay + totalDigits * stepDelay + 500,
       );
     }
-
-    // 6. Finalize (After last digit)
-    setTimeout(
-      () => {
-        finalizeSpin(newWinner);
-      },
-      initialDelay + totalDigits * stepDelay + 500,
-    );
   };
 
   const finalizeSpin = (winner: Winner) => {
@@ -330,6 +401,13 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen font-sans text-white relative overflow-hidden flex flex-col">
+      {/* --- Logo --- */}
+      <img 
+        src="/images/logo.png" 
+        alt="Logo" 
+        className="absolute top-6 left-6 z-50 h-16 w-auto mix-blend-lighten"
+      />
+
       {/* --- Background Image --- */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
@@ -458,20 +536,29 @@ const App: React.FC = () => {
         {/* Action Button & Counter */}
         <div className="text-center z-20">
           {remainingSlots > 0 ? (
-            <button
-              onClick={handleSpin}
-              disabled={isSpinning}
-              className={`
-                  group relative px-10 py-4 md:px-16 md:py-5 rounded-full font-black text-xl md:text-3xl uppercase tracking-widest transition-all transform shadow-[0_10px_20px_rgba(0,0,0,0.5)]
-                  ${
-                    isSpinning
-                      ? "bg-gray-600 text-gray-400 cursor-not-allowed scale-95 opacity-80"
-                      : "bg-gradient-to-b from-yep-gold to-orange-500 text-red-900 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.6)] active:scale-95"
-                  }
-                `}
-            >
-              {isSpinning ? "Đang quay..." : "BẮT ĐẦU"}
-            </button>
+            isSpinPaused ? (
+              <button
+                onClick={handleContinueSpin}
+                className="group relative px-10 py-4 md:px-16 md:py-5 rounded-full font-black text-xl md:text-3xl uppercase tracking-widest transition-all transform shadow-[0_10px_20px_rgba(0,0,0,0.5)] bg-gradient-to-b from-blue-500 to-blue-700 text-white hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] active:scale-95"
+              >
+                TIẾP TỤC
+              </button>
+            ) : (
+              <button
+                onClick={handleSpin}
+                disabled={isSpinning}
+                className={`
+                    group relative px-10 py-4 md:px-16 md:py-5 rounded-full font-black text-xl md:text-3xl uppercase tracking-widest transition-all transform shadow-[0_10px_20px_rgba(0,0,0,0.5)]
+                    ${
+                      isSpinning
+                        ? "bg-gray-600 text-gray-400 cursor-not-allowed scale-95 opacity-80"
+                        : "bg-gradient-to-b from-yep-gold to-orange-500 text-red-900 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.6)] active:scale-95"
+                    }
+                  `}
+              >
+                {isSpinning ? "Đang quay..." : "BẮT ĐẦU"}
+              </button>
+            )
           ) : (
             <div className="bg-black/30 px-8 py-3 rounded-full border border-white/10 text-gray-300 font-bold backdrop-blur italic">
               Đã hoàn tất trao giải này
@@ -492,7 +579,7 @@ const App: React.FC = () => {
       <div className="bg-black/20 backdrop-blur-sm border-t border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-2">
           <div className="flex justify-between items-center mb-1">
-            <span className="text-[10px] uppercase font-bold text-gray-600 tracking-widest">
+            <span className="text-xs uppercase font-bold text-yep-gold/90 tracking-widest">
               Danh sách trúng {currentPrize.name}
             </span>
           </div>
@@ -564,6 +651,15 @@ const App: React.FC = () => {
             <span className="font-bold text-sm hidden md:inline">Âm thanh</span>
           </button>
 
+          <button
+            onClick={() => setIsSuspenseMode(!isSuspenseMode)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${isSuspenseMode ? "bg-blue-600/30 text-blue-400 border border-blue-500" : "hover:bg-white/10 text-gray-300"}`}
+            title="Chế độ hồi hộp"
+          >
+            <Hourglass size={18} />
+            <span className="font-bold text-sm hidden md:inline">Hồi hộp</span>
+          </button>
+
           <div className="w-px h-6 bg-white/20 mx-2 hidden md:block"></div>
 
           <a
@@ -597,6 +693,7 @@ const App: React.FC = () => {
         winners={winners}
         prizes={prizes}
         setWinners={setWinners}
+        initialSelectedPrizeId={currentPrizeId}
       />
 
       <ParticipantsListModal

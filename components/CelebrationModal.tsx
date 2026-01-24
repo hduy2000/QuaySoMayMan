@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Prize, Winner } from '../types';
 import { X, Sparkles, Check, RefreshCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import Swal from 'sweetalert2';
 
 interface CelebrationModalProps {
   isOpen: boolean;
@@ -15,28 +16,93 @@ interface CelebrationModalProps {
 export const CelebrationModal: React.FC<CelebrationModalProps> = ({
   isOpen, onClose, onReject, winner, prize, winnersCount
 }) => {
-  const isGrandPrize = prize.quantity === 1;
+  const isGrandPrizeLayout = prize.quantity === 1;
+
+  const handleRejectClick = () => {
+    if (!onReject) return;
+
+    Swal.fire({
+      title: 'Bạn có chắc chắn?',
+      text: "Người trúng giải này sẽ bị hủy và hệ thống sẽ tiến hành quay lại. Hành động này không thể hoàn tác!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý, quay lại!',
+      cancelButtonText: 'Hủy',
+      background: '#1a1a1a',
+      color: '#eee',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      customClass: {
+        popup: 'rounded-xl',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onReject();
+      }
+    });
+  };
 
   useEffect(() => {
     if (isOpen) {
-      // Trigger confetti
-      const duration = isGrandPrize ? 5000 : 3000;
+      // --- Sound Effect Logic ---
+      let soundSrc: string | null = null;
+      if (prize.id === 'p_dacbiet') {
+        soundSrc = '/sounds/game-sm-jackpot-win.mp3';
+      } else if (prize.id === 'p_nhat' || prize.id === 'p_nhi') {
+        soundSrc = '/sounds/game-tada.mp3';
+      }
+      
+      if (soundSrc) {
+        const audio = new Audio(soundSrc);
+        audio.play();
+        // Optional: Play a cheer sound for the grand prize
+        if (prize.id === 'p_dacbiet') {
+          setTimeout(() => {
+            const cheer = new Audio('/sounds/crowd-cheer-in-school.mp3');
+            cheer.volume = 0.5;
+            cheer.play();
+          }, 1000);
+        }
+      }
+
+      // --- Confetti Effect Logic ---
+      let confettiConfig = {
+        duration: 3000,
+        particleCount: 5,
+        colors: ['#FFD700', '#FFA500']
+      };
+
+      switch (prize.id) {
+        case 'p_dacbiet':
+          confettiConfig = { duration: 7000, particleCount: 10, colors: ['#FFD700', '#FFFFFF', '#FF4136'] };
+          break;
+        case 'p_nhat':
+          confettiConfig = { duration: 5000, particleCount: 8, colors: ['#FFD700', '#FFFFFF'] };
+          break;
+        case 'p_nhi':
+          confettiConfig = { duration: 4000, particleCount: 6, colors: ['#C0C0C0', '#FFFFFF'] }; // Silver and white for 2nd
+          break;
+      }
+
+      const { duration, particleCount, colors } = confettiConfig;
       const end = Date.now() + duration;
 
       const frame = () => {
+        // Left side
         confetti({
-          particleCount: isGrandPrize ? 8 : 5,
+          particleCount,
           angle: 60,
-          spread: 55,
+          spread: 65,
           origin: { x: 0 },
-          colors: isGrandPrize ? ['#FFD700', '#FFFFFF'] : ['#FFD700', '#FFA500']
+          colors
         });
+        // Right side
         confetti({
-          particleCount: isGrandPrize ? 8 : 5,
+          particleCount,
           angle: 120,
-          spread: 55,
+          spread: 65,
           origin: { x: 1 },
-          colors: isGrandPrize ? ['#FFD700', '#FFFFFF'] : ['#FFD700', '#FFA500']
+          colors
         });
 
         if (Date.now() < end) {
@@ -45,14 +111,14 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
       };
       frame();
     }
-  }, [isOpen, isGrandPrize]);
+  }, [isOpen, prize.id]);
 
   if (!isOpen || !winner) return null;
 
   // --- GRAND PRIZE LAYOUT (Dark, Epic, Single Winner) ---
-  if (isGrandPrize) {
+  if (isGrandPrizeLayout) {
     return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 backdrop-blur-xl animate-in fade-in duration-500">
+      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-lg animate-in fade-in duration-500">
         
         {/* Abstract Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -77,7 +143,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
                    {winner.participant.code}
                 </div>
                 
-                <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tight drop-shadow-2xl mb-4 animate-in slide-in-from-bottom-10 duration-700 delay-100">
+                <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tight drop-shadow-2xl mb-4 animate-in slide-in-from-bottom-10 duration-700 delay-100 whitespace-nowrap">
                   {winner.participant.name}
                 </h1>
                 
@@ -100,7 +166,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
           <div className="flex gap-6 z-20">
              {onReject && (
                <button 
-                 onClick={onReject}
+                 onClick={handleRejectClick}
                  className="px-8 py-3 rounded border border-white/20 text-white/60 hover:text-white hover:border-white hover:bg-white/5 transition uppercase font-bold text-sm tracking-widest flex items-center gap-2"
                >
                  <RefreshCcw size={16}/> Bỏ qua
@@ -122,7 +188,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
 
   // --- STANDARD LAYOUT (Festive, Multiple Winners) ---
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 backdrop-blur-lg animate-in fade-in duration-300">
       <div className="absolute top-4 right-4">
         <button onClick={onClose} className="text-white/50 hover:text-white transition p-2 bg-white/10 rounded-full">
           <X size={24} />
@@ -160,7 +226,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
                    <div className="bg-white/10 inline-block px-3 py-1 rounded text-4xl text-yep-gold font-mono mb-2 border border-white/5">
                       {winner.participant.code}
                    </div>
-                   <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight mb-3">
+                   <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight mb-3 whitespace-nowrap">
                      {winner.participant.name}
                    </h2>
                    <p className="text-xl md:text-2xl text-yep-gold font-medium">

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Prize, Winner } from '../types';
 import { X, Trash2, Search, Download } from 'lucide-react';
 import { exportToCSV } from '../utils';
+import Swal from 'sweetalert2';
 
 interface ResultsListModalProps {
   isOpen: boolean;
@@ -9,28 +10,73 @@ interface ResultsListModalProps {
   winners: Winner[];
   prizes: Prize[];
   setWinners: (w: Winner[]) => void;
+  initialSelectedPrizeId: string;
 }
 
 export const ResultsListModal: React.FC<ResultsListModalProps> = ({
-  isOpen, onClose, winners, prizes, setWinners
+  isOpen, onClose, winners, prizes, setWinners, initialSelectedPrizeId
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPrizeId, setSelectedPrizeId] = useState<string>('all');
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedPrizeId(initialSelectedPrizeId || 'all');
+    }
+  }, [isOpen, initialSelectedPrizeId]);
 
   if (!isOpen) return null;
 
-  const filteredWinners = winners.filter(w => 
+  // 1. Filter by search term
+  const searchedWinners = winners.filter(w => 
     w.participant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     w.participant.code.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // 2. Sort by prize order
+  const prizeOrder = ['p_dacbiet', 'p_nhat', 'p_nhi', 'p_mayman'];
+  const sortedWinners = searchedWinners.sort((a, b) => {
+    const prizeAIndex = prizeOrder.indexOf(a.prizeId);
+    const prizeBIndex = prizeOrder.indexOf(b.prizeId);
+    return prizeAIndex - prizeBIndex;
+  });
+  
+  // 3. Filter by selected prize tab
+  const displayedWinners = selectedPrizeId === 'all'
+    ? sortedWinners
+    : sortedWinners.filter(w => w.prizeId === selectedPrizeId);
+
+
   const handleDelete = (id: string, name: string) => {
-    if (confirm(`Bạn chắc chắn muốn hủy kết quả của "${name}"? Giải thưởng sẽ được trả lại kho.`)) {
-      setWinners(winners.filter(w => w.id !== id));
-    }
+    Swal.fire({
+      title: 'Bạn có chắc chắn?',
+      text: `Hủy kết quả của "${name}" sẽ trả lại giải thưởng vào kho. Hành động này không thể hoàn tác!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý, Hủy kết quả!',
+      cancelButtonText: 'Không',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      customClass: {
+        popup: 'rounded-xl',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setWinners(winners.filter(w => w.id !== id));
+        Swal.fire({
+          title: 'Đã xóa!',
+          text: `Kết quả của ${name} đã được hủy.`,
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: { popup: 'rounded-xl' }
+        });
+      }
+    });
   };
 
   const handleExport = () => {
-     const data = winners.map(w => {
+     const data = displayedWinners.map(w => {
          const p = prizes.find(pz => pz.id === w.prizeId);
          return {
              'Giải thưởng': p?.name,
@@ -40,7 +86,9 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
              'Thời gian': new Date(w.timestamp).toLocaleTimeString()
          }
      });
-     exportToCSV(data, 'Ket_Qua_Quay_So.csv');
+     const prizeName = prizes.find(p => p.id === selectedPrizeId)?.name || 'Tat_Ca';
+     const fileName = `Ket_Qua_${prizeName.replace(/\s+/g, '_')}.csv`;
+     exportToCSV(data, fileName);
   };
 
   return (
@@ -65,9 +113,9 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
           <button onClick={onClose} className="hover:bg-white/20 p-2 rounded-full transition"><X /></button>
         </div>
 
-        {/* Toolbar */}
-        <div className="p-4 border-b bg-gray-50 flex gap-4">
-           <div className="relative flex-1">
+        {/* Toolbar & Tabs */}
+        <div className="p-4 border-b bg-gray-50">
+           <div className="relative flex-1 mb-4">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
               <input 
                 type="text" 
@@ -76,6 +124,27 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
               />
+           </div>
+           <div className="flex items-center gap-2 flex-wrap">
+              <button 
+                onClick={() => setSelectedPrizeId('all')}
+                className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === 'all' ? 'bg-yep-red text-white shadow' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}
+              >
+                Tất cả ({winners.length})
+              </button>
+              {prizes.map(p => {
+                const count = winners.filter(w => w.prizeId === p.id).length;
+                if (count === 0) return null;
+                return (
+                  <button 
+                    key={p.id}
+                    onClick={() => setSelectedPrizeId(p.id)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === p.id ? 'bg-yep-red text-white shadow' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}
+                  >
+                    {p.name} ({count})
+                  </button>
+                )
+              })}
            </div>
         </div>
 
@@ -93,18 +162,23 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
               </tr>
             </thead>
             <tbody className="divide-y">
-              {filteredWinners.length === 0 ? (
+              {displayedWinners.length === 0 ? (
                  <tr>
                     <td colSpan={6} className="p-12 text-center text-gray-400 italic">Chưa có dữ liệu</td>
                  </tr>
               ) : (
-                filteredWinners.slice().reverse().map((w, index) => {
+                displayedWinners.map((w, index) => {
                   const prize = prizes.find(p => p.id === w.prizeId);
+                  const isGrandPrize = w.prizeId === 'p_dacbiet';
+                  
                   return (
-                    <tr key={w.id} className="hover:bg-blue-50 group transition-colors">
-                      <td className="p-4 text-gray-500 font-mono">{filteredWinners.length - index}</td>
+                    <tr 
+                      key={w.id} 
+                      className={`group transition-colors ${isGrandPrize ? 'bg-yep-gold/20 hover:bg-yep-gold/30' : 'hover:bg-blue-50'}`}
+                    >
+                      <td className="p-4 text-gray-500 font-mono">{index + 1}</td>
                       <td className="p-4">
-                         <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md">
+                         <span className={`px-3 py-1.5 rounded-lg text-xs font-bold shadow-md text-white ${isGrandPrize ? 'bg-gradient-to-r from-red-600 to-red-800' : 'bg-gradient-to-r from-yellow-400 to-orange-400'}`}>
                            {prize?.name}
                          </span>
                       </td>

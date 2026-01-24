@@ -9,10 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^19.2.3",
-    "react": "^19.2.3",
+    "canvas-confetti": "^1.9.4",
     "lucide-react": "^0.563.0",
-    "canvas-confetti": "^1.9.4"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "sweetalert2": "^11.26.17"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
