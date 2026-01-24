@@ -662,16 +662,7 @@ const App: React.FC = () => {
 
           <div className="w-px h-6 bg-white/20 mx-2 hidden md:block"></div>
 
-          <a
-            href="https://github.com/hduy2000/QuaySoMayMan.git"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition"
-            title="View on GitHub"
-          >
-            <Github size={18} />
-            <span className="font-bold text-sm hidden md:inline">GitHub</span>
-          </a>
+
         </div>
       </footer>
 
