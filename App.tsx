@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Fireworks } from "fireworks-js";
 import { Participant, Prize, Winner } from "./types";
-import { DEFAULT_PARTICIPANTS, DEFAULT_PRIZES, STORAGE_KEY } from "./constants";
+import {
+  DEFAULT_PARTICIPANTS,
+  DEFAULT_PRIZES,
+  STORAGE_KEY,
+  DEFAULT_EVENT_TITLE,
+} from "./constants";
 import { getEligibleParticipants, getRandomParticipant } from "./utils";
 import { SettingsModal } from "./components/SettingsModal";
 import { CelebrationModal } from "./components/CelebrationModal";
@@ -55,6 +61,8 @@ const App: React.FC = () => {
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [isSuspenseMode, setIsSuspenseMode] = useState(false);
   const [isSpinPaused, setIsSpinPaused] = useState(false);
+  const [eventTitle, setEventTitle] = useState(DEFAULT_EVENT_TITLE);
+  const [currentDisplayProduct, setCurrentDisplayProduct] = useState<string | null>(null);
 
   // --- Refs for Audio & Timers ---
   const spinIntervalRef = useRef<number | null>(null);
@@ -81,6 +89,103 @@ const App: React.FC = () => {
 
   // console.log(`[DEBUG] Danh sách đủ điều kiện quay "${currentPrize.name}":`, eligibleParticipants);
 
+  // Random pick product for display when prize changes
+  useEffect(() => {
+    if (currentPrize.products && currentPrize.products.length > 0) {
+      // Get already won products
+      const wonProducts = winners
+        .filter(w => w.prizeId === currentPrizeId)
+        .map(w => w.prizeProduct)
+        .filter(Boolean);
+      
+      // Get available products
+      const availableProducts = currentPrize.products.filter(p => !wonProducts.includes(p));
+      
+      if (availableProducts.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableProducts.length);
+        setCurrentDisplayProduct(availableProducts[randomIndex]);
+      } else {
+        // All products won, pick any
+        const randomIndex = Math.floor(Math.random() * currentPrize.products.length);
+        setCurrentDisplayProduct(currentPrize.products[randomIndex]);
+      }
+    } else {
+      setCurrentDisplayProduct(null);
+    }
+  }, [currentPrizeId, winners]);
+
+  // Background fireworks effect using fireworks-js
+  useEffect(() => {
+    // Create a container for fireworks
+    const container = document.createElement('div');
+    container.id = 'fireworks-container';
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.width = '100%';
+    container.style.height = '100%';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = '5';
+    document.body.appendChild(container);
+
+    const fireworks = new Fireworks(container, {
+      autoresize: true,
+      opacity: 0.5,
+      acceleration: 1.01,
+      friction: 0.97,
+      gravity: 1.5,
+      particles: 120,
+      traceLength: 3,
+      traceSpeed: 8,
+      explosion: 5,
+      intensity: 8,
+      flickering: 50,
+      lineStyle: 'round',
+      hue: {
+        min: 0,
+        max: 360,
+      },
+      delay: {
+        min: 60,
+        max: 90,
+      },
+      rocketsPoint: {
+        min: 50,
+        max: 50,
+      },
+      lineWidth: {
+        explosion: {
+          min: 1,
+          max: 3,
+        },
+        trace: {
+          min: 0.5,
+          max: 1,
+        },
+      },
+      brightness: {
+        min: 50,
+        max: 80,
+      },
+      decay: {
+        min: 0.015,
+        max: 0.03,
+      },
+      mouse: {
+        click: false,
+        move: false,
+        max: 1,
+      },
+    });
+
+    fireworks.start();
+
+    return () => {
+      fireworks.stop();
+      document.body.removeChild(container);
+    };
+  }, []);
+
   // --- Effects ---
 
   // Load/Save Data
@@ -92,6 +197,7 @@ const App: React.FC = () => {
         setParticipants(data.participants || DEFAULT_PARTICIPANTS);
         setPrizes(data.prizes || DEFAULT_PRIZES);
         setWinners(data.winners || []);
+        setEventTitle(data.eventTitle || DEFAULT_EVENT_TITLE);
       } catch (e) {
         console.error("Failed to load data", e);
       }
@@ -101,9 +207,9 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ participants, prizes, winners }),
+      JSON.stringify({ participants, prizes, winners, eventTitle }),
     );
-  }, [participants, prizes, winners]);
+  }, [participants, prizes, winners, eventTitle]);
 
   // Audio Initialization
   useEffect(() => {
@@ -117,15 +223,21 @@ const App: React.FC = () => {
 
     audioWinRef.current = new Audio(AUDIO_PATHS.WIN);
     audioWinRef.current.preload = "auto";
-    
+
     audioCheerRef.current = new Audio(AUDIO_PATHS.CHEER);
     audioCheerRef.current.preload = "auto";
-    
+
     audioClickRef.current = new Audio(AUDIO_PATHS.CLICK);
     audioClickRef.current.preload = "auto";
 
     // Preload all audio files
-    [audioComingRef, audioRollerRef, audioWinRef, audioCheerRef, audioClickRef].forEach(ref => {
+    [
+      audioComingRef,
+      audioRollerRef,
+      audioWinRef,
+      audioCheerRef,
+      audioClickRef,
+    ].forEach((ref) => {
       if (ref.current) {
         ref.current.load();
       }
@@ -152,37 +264,42 @@ const App: React.FC = () => {
 
     setIsSpinPaused(false);
 
+    const currentRevealed = revealedCount;
+    const nextDigit = currentRevealed + 1;
+
+    // If we've revealed all 5 digits, finalize
+    if (nextDigit > 5) {
+      finalizeSpin(targetWinner);
+      return;
+    }
+
     // Restart audio for tension
     if (audioEnabled && audioRollerRef.current) {
       stopAllLoopingSounds();
       audioRollerRef.current.play().catch(() => {});
     }
 
-    const totalDigits = 5;
     const stepDelay = 800;
 
-    // Reveal digits 3, 4
+    // Reveal next digit
     setTimeout(() => {
-      setRevealedCount(3);
+      setRevealedCount(nextDigit);
       if (audioEnabled && audioClickRef.current) {
         audioClickRef.current.currentTime = 0;
         audioClickRef.current.play().catch(() => {});
       }
-    }, stepDelay * 1);
-    
-    setTimeout(() => {
-      setRevealedCount(4);
-      if (audioEnabled && audioClickRef.current) {
-        audioClickRef.current.currentTime = 0;
-        audioClickRef.current.play().catch(() => {});
-      }
-    }, stepDelay * 2);
 
-    // Reveal digit 5 and finalize
-    setTimeout(() => {
-      setRevealedCount(5);
-      setTimeout(() => finalizeSpin(targetWinner), 500);
-    }, stepDelay * 3);
+      // If this is the last digit, finalize
+      if (nextDigit === 5) {
+        setTimeout(() => finalizeSpin(targetWinner), 500);
+      } else {
+        // Otherwise, pause again for next continue
+        setTimeout(() => {
+          setIsSpinPaused(true);
+          stopAudio(audioRollerRef);
+        }, stepDelay);
+      }
+    }, stepDelay);
   };
 
   const handleSpin = () => {
@@ -198,11 +315,18 @@ const App: React.FC = () => {
 
     // console.log("[DEBUG] Người may mắn được chọn ngẫu nhiên:", finalParticipant);
 
+    const prize = prizes.find((p) => p.id === currentPrizeId);
+    
+    // Use the currently displayed product instead of random picking again
+    let selectedProduct = currentDisplayProduct || prize?.product;
+    
     const newWinner: Winner = {
       id: Date.now().toString(),
       participantId: finalParticipant.id,
       participant: finalParticipant,
       prizeId: currentPrizeId,
+      prizeName: prize?.name || "",
+      prizeProduct: selectedProduct,
       timestamp: Date.now(),
     };
 
@@ -233,19 +357,17 @@ const App: React.FC = () => {
     // Check if we use the suspenseful, pausable logic
     if (isSuspenseMode) {
       // --- PAUSABLE LOGIC ---
-      // Reveal first 2 digits then pause
-      for (let i = 1; i <= 2; i++) {
-        setTimeout(
-          () => {
-            setRevealedCount(i);
-            if (audioEnabled && audioClickRef.current) {
-              audioClickRef.current.currentTime = 0;
-              audioClickRef.current.play().catch(() => {});
-            }
-          },
-          initialDelay + i * stepDelay,
-        );
-      }
+      // Reveal first digit then pause
+      setTimeout(
+        () => {
+          setRevealedCount(1);
+          if (audioEnabled && audioClickRef.current) {
+            audioClickRef.current.currentTime = 0;
+            audioClickRef.current.play().catch(() => {});
+          }
+        },
+        initialDelay + stepDelay,
+      );
 
       // Set up the pause
       setTimeout(
@@ -254,7 +376,7 @@ const App: React.FC = () => {
           // Stop the background chaos sound
           stopAudio(audioComingRef);
         },
-        initialDelay + 2 * stepDelay + 100,
+        initialDelay + stepDelay + 100,
       );
     } else {
       // --- ORIGINAL LOGIC ---
@@ -382,14 +504,12 @@ const App: React.FC = () => {
               className={`
                     slot-box w-12 h-16 md:w-20 md:h-28 flex items-center justify-center transform transition-all duration-300
                     ${isLocked ? "scale-110 border-2 border-white/50 shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10" : "scale-100"}
-                `}
-            >
+                `}>
               <span
                 className={`
                     text-3xl md:text-6xl font-black drop-shadow-md font-mono
                     ${isLocked ? "text-white" : "text-white/80 blur-[0.5px]"}
-                `}
-              >
+                `}>
                 {showChar}
               </span>
             </div>
@@ -402,20 +522,19 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen font-sans text-white relative overflow-hidden flex flex-col">
       {/* --- Logo --- */}
-      <img 
-        src="/images/logo.png" 
-        alt="Logo" 
+      <img
+        src="/images/logo.png"
+        alt="Logo"
         className="absolute top-6 left-6 z-50 h-32 w-32"
       />
 
       {/* --- Background Image --- */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-        style={{ backgroundImage: 'url(/images/banner.png)' }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"></div>
+        style={{ backgroundImage: "url(/images/banner.png)" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
       </div>
-      
+
       {/* --- Background Decorations --- */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-yep-gold rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-600 rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
@@ -424,15 +543,13 @@ const App: React.FC = () => {
       <svg
         className="cloud top-10 left-10 w-32 text-yep-gold/10"
         viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+        fill="currentColor">
         <path d="M17.5,19c-3.03,0-5.5-2.47-5.5-5.5c0-0.44,0.05-0.86,0.15-1.27C11.58,12.55,11.07,12.7,10.5,12.7c-2.48,0-4.5-2.02-4.5-4.5c0-0.5,0.08-0.98,0.23-1.43C5.16,7.56,4,8.94,4,10.5c0,2.48,2.02,4.5,4.5,4.5c0.23,0,0.45-0.02,0.67-0.06C9.53,16.64,11.35,18,13.5,18c0.75,0,1.46-0.17,2.1-0.47C16.14,18.33,16.79,19,17.5,19z" />
       </svg>
       <svg
         className="cloud top-20 right-20 w-48 text-yep-gold/10"
         viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+        fill="currentColor">
         <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
       </svg>
 
@@ -443,7 +560,7 @@ const App: React.FC = () => {
           <div className="inline-flex items-center gap-2 mb-6 bg-black/20 backdrop-blur px-6 py-2 rounded-full border border-white/10">
             <Trophy size={20} className="text-yep-gold" />
             <span className="text-sm md:text-base font-bold tracking-widest text-yep-gold uppercase">
-              BỆNH VIỆN ĐA KHOA QUỐC TẾ BẮC HÀ - YEP 2026
+              {eventTitle}
             </span>
           </div>
           <h1 className="text-3xl md:text-5xl font-display font-black uppercase text-yep-gold drop-shadow-lg tracking-tighter mb-2">
@@ -452,6 +569,18 @@ const App: React.FC = () => {
           <h2 className="text-4xl md:text-6xl font-display font-black uppercase text-white drop-shadow-xl tracking-wide">
             {currentPrize.name}
           </h2>
+          {!isPrizeFinished && (currentDisplayProduct || currentPrize.product) && (
+            <div className="mt-4">
+              <p className="text-xl md:text-2xl text-white/90 font-semibold">
+                {currentDisplayProduct || currentPrize.product}
+              </p>
+              {currentPrize.value && (
+                <p className="text-lg text-yep-gold/80 mt-1">
+                  Trị giá: {currentPrize.value}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Navigation & Badge */}
@@ -459,8 +588,7 @@ const App: React.FC = () => {
           <button
             onClick={prevPrize}
             disabled={isSpinning || currentPrizeIndex === 0}
-            className="p-3 rounded-full border-2 border-yep-gold/50 text-yep-gold hover:bg-yep-gold hover:text-red-900 transition disabled:opacity-20 disabled:cursor-not-allowed group"
-          >
+            className="p-3 rounded-full border-2 border-yep-gold/50 text-yep-gold hover:bg-yep-gold hover:text-red-900 transition disabled:opacity-20 disabled:cursor-not-allowed group">
             <ChevronLeft
               size={32}
               className="group-hover:scale-110 transition"
@@ -469,25 +597,17 @@ const App: React.FC = () => {
 
           {/* Central Badge */}
           <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
-            <svg
-              className="absolute inset-0 text-gradient-to-br from-yep-gold to-orange-500 drop-shadow-[0_0_20px_rgba(255,215,0,0.6)] animate-pulse"
-              viewBox="0 0 100 100"
-              fill="url(#grad1)"
-            >
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FFD700" />
-                  <stop offset="100%" stopColor="#FF8C00" />
-                </linearGradient>
-              </defs>
-              <polygon points="50 0, 95 25, 95 75, 50 100, 5 75, 5 25" />
-            </svg>
+            <img
+              src="images/award.png"
+              alt="award frame"
+              className="absolute inset-0 w-full h-full object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)] animate-pulse"
+            />
             <div className="relative z-10 text-center">
               <div className="text-4xl md:text-5xl font-black text-red-900 leading-none">
                 {currentPrize.quantity}
               </div>
               <div className="text-[10px] md:text-xs font-bold text-red-800 uppercase mt-1">
-                Giải
+                &nbsp;
               </div>
             </div>
           </div>
@@ -495,8 +615,7 @@ const App: React.FC = () => {
           <button
             onClick={nextPrize}
             disabled={isSpinning || currentPrizeIndex === prizes.length - 1}
-            className="p-3 rounded-full border-2 border-yep-gold/50 text-yep-gold hover:bg-yep-gold hover:text-red-900 transition disabled:opacity-20 disabled:cursor-not-allowed group"
-          >
+            className="p-3 rounded-full border-2 border-yep-gold/50 text-yep-gold hover:bg-yep-gold hover:text-red-900 transition disabled:opacity-20 disabled:cursor-not-allowed group">
             <ChevronRight
               size={32}
               className="group-hover:scale-110 transition"
@@ -513,8 +632,7 @@ const App: React.FC = () => {
             {/* Name is hidden while spinning until the very end or maybe last step? 
                    Let's only show name when NOT spinning or when revealedCount === 5 */}
             <div
-              className={`mt-6 text-center transition-opacity duration-500 ${!isSpinning || revealedCount === 5 ? "opacity-100" : "opacity-0"}`}
-            >
+              className={`mt-6 text-center transition-opacity duration-500 ${!isSpinning || revealedCount === 5 ? "opacity-100" : "opacity-0"}`}>
               {displayParticipant ? (
                 <>
                   <div className="text-2xl md:text-4xl font-bold text-yep-gold uppercase tracking-wider text-shadow-gold">
@@ -524,12 +642,10 @@ const App: React.FC = () => {
                     {displayParticipant.department}
                   </div>
                 </>
-              ) : (
-                isPrizeFinished ? null : (
-                  <div className="text-xl text-white/50 uppercase font-bold tracking-widest mt-4">
-                    Sẵn sàng
-                  </div>
-                )
+              ) : isPrizeFinished ? null : (
+                <div className="text-xl text-white/50 uppercase font-bold tracking-widest mt-4">
+                  Sẵn sàng
+                </div>
               )}
             </div>
           </div>
@@ -541,8 +657,7 @@ const App: React.FC = () => {
             isSpinPaused ? (
               <button
                 onClick={handleContinueSpin}
-                className="group relative px-10 py-4 md:px-16 md:py-5 rounded-full font-black text-xl md:text-3xl uppercase tracking-widest transition-all transform shadow-[0_10px_20px_rgba(0,0,0,0.5)] bg-gradient-to-b from-blue-500 to-blue-700 text-white hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] active:scale-95"
-              >
+                className="group relative px-10 py-4 md:px-16 md:py-5 rounded-full font-black text-xl md:text-3xl uppercase tracking-widest transition-all transform shadow-[0_10px_20px_rgba(0,0,0,0.5)] bg-gradient-to-b from-blue-500 to-blue-700 text-white hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] active:scale-95">
                 TIẾP TỤC
               </button>
             ) : (
@@ -556,8 +671,7 @@ const App: React.FC = () => {
                         ? "bg-gray-600 text-gray-400 cursor-not-allowed scale-95 opacity-80"
                         : "bg-gradient-to-b from-yep-gold to-orange-500 text-red-900 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.6)] active:scale-95"
                     }
-                  `}
-              >
+                  `}>
                 {isSpinning ? "Đang quay..." : "BẮT ĐẦU"}
               </button>
             )
@@ -571,6 +685,32 @@ const App: React.FC = () => {
             / {currentPrize.quantity} người trúng giải này
           </div>
         </div>
+
+        {/* Product Image Display - Fixed position on the right */}
+        {currentPrize.imageUrl && currentPrize.quantity === 1 && (
+          <div className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-20 animate-in slide-in-from-right duration-700">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-yep-gold/20 to-orange-500/20 rounded-2xl blur-xl"></div>
+              <div className="relative bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 shadow-2xl">
+                <img
+                  src={currentPrize.imageUrl}
+                  alt={currentPrize.product || currentPrize.name}
+                  className="w-64 h-64 object-contain rounded-lg"
+                />
+                <div className="mt-4 text-center">
+                  <p className="text-white/90 font-bold text-lg">
+                    {currentPrize.product}
+                  </p>
+                  {currentPrize.value && (
+                    <p className="text-yep-gold font-bold text-xl mt-2">
+                      {currentPrize.value}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* --- Footer List (Filtered by Current Prize) --- */}
@@ -593,12 +733,21 @@ const App: React.FC = () => {
               .map((w) => (
                 <div
                   key={w.id}
-                  className="flex-shrink-0 bg-white/90 rounded px-3 py-1 min-w-[140px] border border-gray-200 flex flex-col justify-center animate-in fade-in slide-in-from-right-4 duration-300 shadow-sm"
-                >
-                  <div className="font-bold text-xs text-gray-900 truncate">
+                  className="flex-shrink-0 bg-white/90 rounded px-3 py-1.5 min-w-[140px] border border-gray-200 flex flex-col justify-center animate-in fade-in slide-in-from-right-4 duration-300 shadow-sm">
+                  <div className="font-bold text-xs text-gray-900 truncate flex items-center gap-1">
+                    {w.participant.onDuty && (
+                      <span className="text-red-600" title="Đang trực">
+                        ⚕️
+                      </span>
+                    )}
                     {w.participant.name}
                   </div>
-                  <div className="flex justify-between items-center">
+                  {w.prizeProduct && (
+                    <div className="text-[9px] text-blue-600 font-medium truncate mt-0.5">
+                      {w.prizeProduct}
+                    </div>
+                  )}
+                  <div className="flex justify-between items-center mt-0.5">
                     <span className="text-[10px] text-red-600 font-bold">
                       {currentPrize.name}
                     </span>
@@ -617,16 +766,14 @@ const App: React.FC = () => {
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-2 md:gap-6">
           <button
             onClick={() => setActiveModal("participants")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition"
-          >
+            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition">
             <Users size={18} />{" "}
             <span className="font-bold text-sm">Người tham dự</span>
           </button>
 
           <button
             onClick={() => setActiveModal("results")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition"
-          >
+            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition">
             <List size={18} />{" "}
             <span className="font-bold text-sm">Kết quả</span>
           </button>
@@ -635,16 +782,14 @@ const App: React.FC = () => {
 
           <button
             onClick={() => setActiveModal("settings")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition"
-          >
+            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10 text-gray-300 hover:text-white transition">
             <Settings size={18} />{" "}
             <span className="font-bold text-sm">Cấu hình</span>
           </button>
 
           <button
             onClick={() => setAudioEnabled(!audioEnabled)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${audioEnabled ? "bg-yep-gold/20 text-yep-gold" : "hover:bg-white/10 text-gray-400"}`}
-          >
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${audioEnabled ? "bg-yep-gold/20 text-yep-gold" : "hover:bg-white/10 text-gray-400"}`}>
             {audioEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
             <span className="font-bold text-sm hidden md:inline">Âm thanh</span>
           </button>
@@ -652,15 +797,12 @@ const App: React.FC = () => {
           <button
             onClick={() => setIsSuspenseMode(!isSuspenseMode)}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${isSuspenseMode ? "bg-blue-600/30 text-blue-400 border border-blue-500" : "hover:bg-white/10 text-gray-300"}`}
-            title="Chế độ hồi hộp"
-          >
+            title="Chế độ hồi hộp">
             <Hourglass size={18} />
             <span className="font-bold text-sm hidden md:inline">Hồi hộp</span>
           </button>
 
           <div className="w-px h-6 bg-white/20 mx-2 hidden md:block"></div>
-
-
         </div>
       </footer>
 
@@ -674,6 +816,8 @@ const App: React.FC = () => {
         setPrizes={setPrizes}
         winners={winners}
         setWinners={setWinners}
+        eventTitle={eventTitle}
+        setEventTitle={setEventTitle}
       />
 
       <ResultsListModal

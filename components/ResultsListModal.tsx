@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Prize, Winner } from '../types';
-import { X, Trash2, Search, Download } from 'lucide-react';
-import { exportToCSV } from '../utils';
-import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import { Prize, Winner } from "../types";
+import { X, Trash2, Search, Download } from "lucide-react";
+import { exportToCSV } from "../utils";
+import Swal from "sweetalert2";
 
 interface ResultsListModalProps {
   isOpen: boolean;
@@ -14,136 +14,187 @@ interface ResultsListModalProps {
 }
 
 export const ResultsListModal: React.FC<ResultsListModalProps> = ({
-  isOpen, onClose, winners, prizes, setWinners, initialSelectedPrizeId
+  isOpen,
+  onClose,
+  winners,
+  prizes,
+  setWinners,
+  initialSelectedPrizeId,
 }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedPrizeId, setSelectedPrizeId] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedPrizeId, setSelectedPrizeId] = useState<string>("all");
 
   useEffect(() => {
     if (isOpen) {
-      setSelectedPrizeId(initialSelectedPrizeId || 'all');
+      // Convert prizeId to prizeName if needed
+      if (initialSelectedPrizeId && initialSelectedPrizeId !== 'all') {
+        const prize = prizes.find(p => p.id === initialSelectedPrizeId);
+        setSelectedPrizeId(prize?.name || initialSelectedPrizeId);
+      } else {
+        setSelectedPrizeId(initialSelectedPrizeId || "all");
+      }
     }
-  }, [isOpen, initialSelectedPrizeId]);
+  }, [isOpen, initialSelectedPrizeId, prizes]);
 
   if (!isOpen) return null;
 
   // 1. Filter by search term
-  const searchedWinners = winners.filter(w => 
-    w.participant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    w.participant.code.toLowerCase().includes(searchTerm.toLowerCase())
+  const searchedWinners = winners.filter(
+    (w) =>
+      w.participant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      w.participant.code.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   // 2. Sort by prize order
-  const prizeOrder = ['p_dacbiet', 'p_nhat', 'p_nhi', 'p_mayman'];
+  const prizeNameOrder = [
+    "GIẢI SỨ MỆNH VÀNG",
+    "GIẢI CỐNG HIẾN TOẢ SÁNG",
+    "GIẢI ĐỒNG HÀNH BỀN VỮNG",
+    "GIẢI GẮN KẾT YÊU THƯƠNG"
+  ];
   const sortedWinners = searchedWinners.sort((a, b) => {
-    const prizeAIndex = prizeOrder.indexOf(a.prizeId);
-    const prizeBIndex = prizeOrder.indexOf(b.prizeId);
+    // Fallback: get prizeName from prize if winner doesn't have it
+    const prizeA = prizes.find(p => p.id === a.prizeId);
+    const prizeB = prizes.find(p => p.id === b.prizeId);
+    const prizeAName = a.prizeName || prizeA?.name || '';
+    const prizeBName = b.prizeName || prizeB?.name || '';
+    const prizeAIndex = prizeNameOrder.indexOf(prizeAName);
+    const prizeBIndex = prizeNameOrder.indexOf(prizeBName);
     return prizeAIndex - prizeBIndex;
   });
-  
-  // 3. Filter by selected prize tab
-  const displayedWinners = selectedPrizeId === 'all'
-    ? sortedWinners
-    : sortedWinners.filter(w => w.prizeId === selectedPrizeId);
 
+  // 3. Group winners by prize name for filter buttons
+  const prizeGroups = new Map<string, { name: string; count: number; color: string }>();
+  winners.forEach((w) => {
+    const prize = prizes.find(p => p.id === w.prizeId);
+    const prizeName = w.prizeName || prize?.name || 'Unknown';
+    const existing = prizeGroups.get(prizeName);
+    if (existing) {
+      existing.count++;
+    } else {
+      prizeGroups.set(prizeName, {
+        name: prizeName,
+        count: 1,
+        color: prize?.color || 'from-gray-400 to-gray-600'
+      });
+    }
+  });
+
+  // 4. Filter by selected prize name
+  const displayedWinners =
+    selectedPrizeId === "all"
+      ? sortedWinners
+      : sortedWinners.filter((w) => {
+          const prize = prizes.find(p => p.id === w.prizeId);
+          const prizeName = w.prizeName || prize?.name || '';
+          return prizeName === selectedPrizeId;
+        });
 
   const handleDelete = (id: string, name: string) => {
     Swal.fire({
-      title: 'Bạn có chắc chắn?',
+      title: "Bạn có chắc chắn?",
       text: `Hủy kết quả của "${name}" sẽ trả lại giải thưởng vào kho. Hành động này không thể hoàn tác!`,
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Đồng ý, Hủy kết quả!',
-      cancelButtonText: 'Không',
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      confirmButtonText: "Đồng ý, Hủy kết quả!",
+      cancelButtonText: "Không",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
       customClass: {
-        popup: 'rounded-xl',
-      }
+        popup: "rounded-xl",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        setWinners(winners.filter(w => w.id !== id));
+        setWinners(winners.filter((w) => w.id !== id));
         Swal.fire({
-          title: 'Đã xóa!',
+          title: "Đã xóa!",
           text: `Kết quả của ${name} đã được hủy.`,
-          icon: 'success',
+          icon: "success",
           timer: 1500,
           showConfirmButton: false,
-          customClass: { popup: 'rounded-xl' }
+          customClass: { popup: "rounded-xl" },
         });
       }
     });
   };
 
   const handleExport = () => {
-     const data = displayedWinners.map(w => {
-         return {
-             'Mã NV': w.participant.code,
-             'Họ tên': w.participant.name,
-             'Bộ phận': w.participant.department,
-             'Thời gian': new Date(w.timestamp).toLocaleTimeString()
-         }
-     });
-     const prizeName = prizes.find(p => p.id === selectedPrizeId)?.name || 'Tat_Ca';
-     const fileName = `Ket_Qua_${prizeName.replace(/\s+/g, '_')}.csv`;
-     exportToCSV(data, fileName);
+    const data = displayedWinners.map((w) => {
+      return {
+        "Mã NV": w.participant.code,
+        "Họ tên": w.participant.name,
+        "Bộ phận": w.participant.department,
+        "Thời gian": new Date(w.timestamp).toLocaleTimeString(),
+      };
+    });
+    const prizeName =
+      prizes.find((p) => p.id === selectedPrizeId)?.name || "Tat_Ca";
+    const fileName = `Ket_Qua_${prizeName.replace(/\s+/g, "_")}.csv`;
+    exportToCSV(data, fileName);
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden">
-        
         {/* Header */}
         <div className="flex justify-between items-center p-5 bg-gradient-to-r from-yep-red to-red-900 text-white">
           <div className="flex items-center gap-3">
-             <button 
-                className="bg-white/20 p-2 rounded hover:bg-white/30 text-yep-gold hover:text-white transition"
-                onClick={handleExport} 
-                title="Xuất Excel"
-             >
-                <Download size={20} />
-             </button>
-             <div>
-                <h2 className="text-xl font-bold font-display uppercase">Danh sách trúng giải</h2>
-                <p className="text-xs text-white/60">Tổng cộng: {winners.length} giải đã trao</p>
-             </div>
+            <button
+              className="bg-white/20 p-2 rounded hover:bg-white/30 text-yep-gold hover:text-white transition"
+              onClick={handleExport}
+              title="Xuất Excel">
+              <Download size={20} />
+            </button>
+            <div>
+              <h2 className="text-xl font-bold font-display uppercase">
+                Danh sách trúng giải
+              </h2>
+              <p className="text-xs text-white/60">
+                Tổng cộng: {winners.length} giải đã trao
+              </p>
+            </div>
           </div>
-          <button onClick={onClose} className="hover:bg-white/20 p-2 rounded-full transition"><X /></button>
+          <button
+            onClick={onClose}
+            className="hover:bg-white/20 p-2 rounded-full transition">
+            <X />
+          </button>
         </div>
 
         {/* Toolbar & Tabs */}
         <div className="p-4 border-b bg-gray-50">
-           <div className="relative flex-1 mb-4">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-              <input 
-                type="text" 
-                placeholder="Tìm tên hoặc mã nhân viên..." 
-                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yep-red/50 text-gray-900 placeholder:text-gray-400 bg-white"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-              />
-           </div>
-           <div className="flex items-center gap-2 flex-wrap">
-              <button 
-                onClick={() => setSelectedPrizeId('all')}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === 'all' ? 'bg-yep-red text-white shadow' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}
-              >
-                Tất cả ({winners.length})
-              </button>
-              {prizes.map(p => {
-                const count = winners.filter(w => w.prizeId === p.id).length;
-                if (count === 0) return null;
-                return (
-                  <button 
-                    key={p.id}
-                    onClick={() => setSelectedPrizeId(p.id)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === p.id ? 'bg-yep-red text-white shadow' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}
-                  >
-                    {p.name} ({count})
-                  </button>
-                )
-              })}
-           </div>
+          <div className="relative flex-1 mb-4">
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={18}
+            />
+            <input
+              type="text"
+              placeholder="Tìm tên hoặc mã nhân viên..."
+              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yep-red/50 text-gray-900 placeholder:text-gray-400 bg-white"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              onClick={() => setSelectedPrizeId("all")}
+              className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === "all" ? "bg-yep-red text-white shadow" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}`}>
+              Tất cả ({winners.length})
+            </button>
+            {Array.from(prizeGroups.entries())
+              .sort((a, b) => prizeNameOrder.indexOf(a[0]) - prizeNameOrder.indexOf(b[0]))
+              .map(([prizeName, group]) => {
+              return (
+                <button
+                  key={prizeName}
+                  onClick={() => setSelectedPrizeId(prizeName)}
+                  className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === prizeName ? "bg-yep-red text-white shadow" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}`}>
+                  {prizeName} ({group.count})
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* List */}
@@ -155,53 +206,84 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
                 <th className="p-4">Mã NV</th>
                 <th className="p-4">Họ và Tên</th>
                 <th className="p-4">Bộ phận</th>
+                <th className="p-4">Sản phẩm</th>
                 <th className="p-4 text-center">Xóa</th>
               </tr>
             </thead>
             <tbody className="divide-y">
               {displayedWinners.length === 0 ? (
-                 <tr>
-                    <td colSpan={5} className="p-12 text-center text-gray-400 italic">Chưa có dữ liệu</td>
-                 </tr>
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="p-12 text-center text-gray-400 italic">
+                    Chưa có dữ liệu
+                  </td>
+                </tr>
               ) : (
                 displayedWinners.map((w, index) => {
-                  const prize = prizes.find(p => p.id === w.prizeId);
+                  const prize = prizes.find((p) => p.id === w.prizeId);
 
                   const getPrizeRowClass = (prizeId: string) => {
                     switch (prizeId) {
-                      case 'p_dacbiet': return 'bg-yep-gold/20 hover:bg-yep-gold/30';
-                      case 'p_nhat': return 'bg-blue-100/50 hover:bg-blue-200/50';
-                      case 'p_nhi': return 'bg-green-100/50 hover:bg-green-200/50';
-                      default: return 'hover:bg-gray-50';
+                      case "p_dacbiet":
+                        return "bg-yep-gold/20 hover:bg-yep-gold/30";
+                      case "p_nhat":
+                        return "bg-blue-100/50 hover:bg-blue-200/50";
+                      case "p_nhi":
+                        return "bg-green-100/50 hover:bg-green-200/50";
+                      default:
+                        return "hover:bg-gray-50";
                     }
                   };
 
                   const getPrizeBadgeClass = (prizeId: string) => {
                     switch (prizeId) {
-                      case 'p_dacbiet': return 'bg-gradient-to-r from-red-600 to-red-800 text-white';
-                      case 'p_nhat': return 'bg-gradient-to-r from-blue-600 to-blue-800 text-white';
-                      case 'p_nhi': return 'bg-gradient-to-r from-green-600 to-green-800 text-white';
-                      default: return 'bg-gradient-to-r from-yellow-400 to-orange-400 text-white';
+                      case "p_dacbiet":
+                        return "bg-gradient-to-r from-red-600 to-red-800 text-white";
+                      case "p_nhat":
+                        return "bg-gradient-to-r from-blue-600 to-blue-800 text-white";
+                      case "p_nhi":
+                        return "bg-gradient-to-r from-green-600 to-green-800 text-white";
+                      default:
+                        return "bg-gradient-to-r from-yellow-400 to-orange-400 text-white";
                     }
                   };
-                  
+
                   return (
-                    <tr 
-                      key={w.id} 
-                      className={`group transition-colors ${getPrizeRowClass(w.prizeId)}`}
-                    >
-                      <td className="p-4 text-gray-500 font-mono">{index + 1}</td>
-                      <td className="p-4 font-mono text-gray-600 font-bold">{w.participant.code}</td>
-                      <td className="p-4 font-bold text-gray-800 text-base">{w.participant.name}</td>
-                      <td className="p-4 text-gray-500">{w.participant.department}</td>
+                    <tr
+                      key={w.id}
+                      className={`group transition-colors ${getPrizeRowClass(w.prizeId)}`}>
+                      <td className="p-4 text-gray-500 font-mono">
+                        {index + 1}
+                      </td>
+                      <td className="p-4 font-mono text-gray-600 font-bold">
+                        {w.participant.code}
+                      </td>
+                      <td className="p-4 font-bold text-gray-800 text-base">
+                        {w.participant.name}
+                      </td>
+                      <td className="p-4 text-gray-500">
+                        <div className="flex items-center gap-2">
+                          <span>{w.participant.department}</span>
+                          {w.participant.onDuty && (
+                            <span
+                              className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-bold"
+                              title="Đang trực">
+                              ⚕️ Đang trực
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="p-4 text-gray-600 text-sm">
+                        {w.prizeProduct || prize?.product || <span className="text-gray-400 italic">-</span>}
+                      </td>
                       <td className="p-4 text-center">
-                         <button 
-                           onClick={() => handleDelete(w.id, w.participant.name)}
-                           className="text-red-500 bg-red-50 p-2 rounded transition-all hover:bg-red-100 hover:scale-110 shadow-sm"
-                           title="Xóa kết quả này"
-                         >
-                           <Trash2 size={16}/>
-                         </button>
+                        <button
+                          onClick={() => handleDelete(w.id, w.participant.name)}
+                          className="text-red-500 bg-red-50 p-2 rounded transition-all hover:bg-red-100 hover:scale-110 shadow-sm"
+                          title="Xóa kết quả này">
+                          <Trash2 size={16} />
+                        </button>
                       </td>
                     </tr>
                   );

@@ -3,1761 +3,2051 @@
     "Mã NV": "21042",
     "Họ và tên": "Nguyễn Thắng Lợi",
     "Khoa Phòng": "Ban GĐ",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20556",
     "Họ và tên": "Lưu Quốc Khải",
     "Khoa Phòng": "Ban GĐ",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25244",
     "Họ và tên": "Nguyễn Thị Ngọc Lan",
     "Khoa Phòng": "Ban GĐ",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "25068",
     "Họ và tên": "Trịnh Văn Báu",
     "Khoa Phòng": "BP Kỹ thuật & VTYT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18099",
     "Họ và tên": "Nguyễn Tiến Bộ",
     "Khoa Phòng": "BP Kỹ thuật & VTYT",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18100",
     "Họ và tên": "Vương Xuân Hải",
     "Khoa Phòng": "BP Kỹ thuật & VTYT",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20345",
     "Họ và tên": "Võ Trường Sơn",
     "Khoa Phòng": "BP Kỹ thuật & VTYT",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19249",
     "Họ và tên": "Phạm Ngọc Anh",
     "Khoa Phòng": "BP Kỹ thuật & VTYT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "17118",
     "Họ và tên": "Nguyễn Hằng Nga",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21087",
     "Họ và tên": "Dương Huyền Thanh",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19227",
     "Họ và tên": "Bùi Thị Thanh Quý",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22030",
     "Họ và tên": "Bùi Thị Thu Hà",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21140",
     "Họ và tên": "Nguyễn Thị Phương",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25020",
     "Họ và tên": "Phạm Thị Thu Hương",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25028",
     "Họ và tên": "Tạ Minh Thuận",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25107",
     "Họ và tên": "Nguyễn Thị Tuyến",
     "Khoa Phòng": "BP. CSKH",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "16024",
     "Họ và tên": "Nguyễn Thị Hoài Sâm",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22005",
     "Họ và tên": "Nguyễn Thị Phương Thảo",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22324",
     "Họ và tên": "Nguyễn Thị Kim Dung",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25005",
     "Họ và tên": "Nguyễn Đức Huyên",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17069",
     "Họ và tên": "Hoàng Thị Lành",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17035",
     "Họ và tên": "Nguyễn Thị Thu Thủy",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23106",
     "Họ và tên": "Lê Thúy An",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17026",
     "Họ và tên": "Bùi Thị Hải Yến",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20527",
     "Họ và tên": "Nguyễn Văn Thành",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20737",
     "Họ và tên": "Phan Thị Thủy",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23127",
     "Họ và tên": "Hoàng Thị Vân",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23164",
     "Họ và tên": "Triệu Thị Hồng Thắm",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23218",
     "Họ và tên": "Vũ Ngọc Hiền",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24044",
     "Họ và tên": "Đinh Ngọc Khánh",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25039",
     "Họ và tên": "Trần Thu Phương",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25050",
     "Họ và tên": "Bùi Hồng Duyên",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25082",
     "Họ và tên": "Nguyễn Vũ Phương Anh",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25081",
     "Họ và tên": "Lục Thị Hà Vi",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25092",
     "Họ và tên": "Triệu Vi Hoa",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25161",
     "Họ và tên": "Nguyễn Quỳnh Trang",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19463",
     "Họ và tên": "Ngô Hồng Nhung",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25173",
     "Họ và tên": "Tạ Ly Ly",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25171",
     "Họ và tên": "Ngô Ngọc Tú",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25216",
     "Họ và tên": "Nguyễn Bích Ngọc",
     "Khoa Phòng": "K. Khám bệnh",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "22031",
     "Họ và tên": "Vũ Văn Biên",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22177",
     "Họ và tên": "Bùi Thị Kim Thanh",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16067",
     "Họ và tên": "Trần Thị Huyền",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20789",
     "Họ và tên": "Nguyễn Thị Hằng",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17039",
     "Họ và tên": "Nguyễn Thị Minh Tuyết",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21064",
     "Họ và tên": "Nguyễn Thị Nhuận",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22287",
     "Họ và tên": "Trần Thị Thu Hiền",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23152",
     "Họ và tên": "Dương Hồng Nhung",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22222",
     "Họ và tên": "Lê Thị Ánh Tuyết",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24216",
     "Họ và tên": "Bùi Minh Ngọc",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24211",
     "Họ và tên": "Hoàng Thị Thanh Hiền",
     "Khoa Phòng": "K. Nội",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "23208",
     "Họ và tên": "Hoàng Ngọc Minh",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21192",
     "Họ và tên": "Nguyễn Đức Âu",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16073",
     "Họ và tên": "Nguyễn Thị Thu Hà",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20745",
     "Họ và tên": "Tống Thị Hiền",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21216",
     "Họ và tên": "Nguyễn Thị Thanh Thủy",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21183",
     "Họ và tên": "Nguyễn Văn Tuyến",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22299",
     "Họ và tên": "Nguyễn Thị Thu",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23111",
     "Họ và tên": "Dương Thùy Nhung",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23083",
     "Họ và tên": "Nguyễn Thị Kiều Anh",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22208",
     "Họ và tên": "Lại Hoàng Anh Thương",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24088",
     "Họ và tên": "Nguyễn Minh Hiếu",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24122",
     "Họ và tên": "Vũ Thanh Ngọc",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24131",
     "Họ và tên": "Phan Hải Yến",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24136",
     "Họ và tên": "Nguyễn Việt Anh",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24133",
     "Họ và tên": "Trần Diệu Linh",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24171",
     "Họ và tên": "Hoàng Minh Đức",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24215",
     "Họ và tên": "Bùi Hà Diệp",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25059",
     "Họ và tên": "Phạm Thị Vân",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25064",
     "Họ và tên": "Dương Văn Giang",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25147",
     "Họ và tên": "Nguyễn Minh Đức",
     "Khoa Phòng": "K. Ngoại",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "24050",
     "Họ và tên": "Nguyễn Mạnh Hồng",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19300",
     "Họ và tên": "Nguyễn Quốc Sơn",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20609",
     "Họ và tên": "Nguyễn Minh Hà",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16267",
     "Họ và tên": "Nguyễn Đức Thế",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17010",
     "Họ và tên": "Lê Túy Hoa",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19145",
     "Họ và tên": "Đỗ Thu Huệ",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23236",
     "Họ và tên": "Trần Thị Khánh Huyền",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16075",
     "Họ và tên": "Phạm Văn Hoàng",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21148",
     "Họ và tên": "Bùi Thị Nga",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19282",
     "Họ và tên": "Phạm Thị Anh",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20692",
     "Họ và tên": "Dương Thị Loan",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24236",
     "Họ và tên": "Vi Thị Phương Đan",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21067",
     "Họ và tên": "Bùi Thị Hằng",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23116",
     "Họ và tên": "Nguyễn Thị Yến Chi",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23151",
     "Họ và tên": "Hoàng Thị Thúy",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21258",
     "Họ và tên": "Trần Thị Thúy",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22162",
     "Họ và tên": "Phùng Thu Trang",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22224",
     "Họ và tên": "Phạm Thị Thảo",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23159",
     "Họ và tên": "Trần Thị Khánh Ly",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24026",
     "Họ và tên": "Nguyễn Lan Chi",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24014",
     "Họ và tên": "Nguyễn Thị Thu Hồng",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24066",
     "Họ và tên": "Hoàng Thu Uyên",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24069",
     "Họ và tên": "Lê Diệu Linh",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24129",
     "Họ và tên": "Công Quốc Hiếu",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24130",
     "Họ và tên": "Nguyễn Thị Huyền Thương",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24158",
     "Họ và tên": "Nguyễn Văn Hào",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22315",
     "Họ và tên": "Nguyễn Hải Hà",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25219",
     "Họ và tên": "Lê Thùy Dương",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17063",
     "Họ và tên": "Nguyễn Thị Kiều Giao",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24176",
     "Họ và tên": "Nguyễn Thị Quyên",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25093",
     "Họ và tên": "Hà Thị Ánh Hồng",
     "Khoa Phòng": "BP. GMHS",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "21029",
     "Họ và tên": "Trần Thị Hoa",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21020",
     "Họ và tên": "Nguyễn Văn Khởi",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20804",
     "Họ và tên": "Trần Thị Liên",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24309",
     "Họ và tên": "Chu Thùy Linh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22271",
     "Họ và tên": "Kiều Văn Long",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24210",
     "Họ và tên": "Nguyễn Thị Linh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25008",
     "Họ và tên": "Đinh Gia Khuê",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17034",
     "Họ và tên": "Phạm Thị Thương Huyền",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17032",
     "Họ và tên": "Nguyễn Thị Phương Anh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16079",
     "Họ và tên": "Nguyễn Thị Nga",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19471",
     "Họ và tên": "Nguyễn Bích Hạnh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20697",
     "Họ và tên": "Hoàng Thanh Nhàn",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20707",
     "Họ và tên": "Trần Khánh Huyền",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20732",
     "Họ và tên": "Trần Thị Nhài",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20733",
     "Họ và tên": "Vũ Ngọc Ánh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20735",
     "Họ và tên": "Bùi Thị Thảo",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20736",
     "Họ và tên": "Lương Thị Nguyên Sao",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21050",
     "Họ và tên": "Nguyễn Thị Thu An",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21261",
     "Họ và tên": "Nguyễn Kiều Trang",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22095",
     "Họ và tên": "Trần Thị Thu Uyên",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22107",
     "Họ và tên": "Phạm Thị Phương Thảo",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22311",
     "Họ và tên": "Phạm Thu Hà",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23117",
     "Họ và tên": "Trần Thị Út",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23174",
     "Họ và tên": "Nguyễn Trường Anh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22267",
     "Họ và tên": "Trần Thị Thanh Tâm",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20668",
     "Họ và tên": "Ngô Thị Phương",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24183",
     "Họ và tên": "Nguyễn Trà My",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25040",
     "Họ và tên": "Đinh Phương Anh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25053",
     "Họ và tên": "Nguyễn Nhật Ninh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25060",
     "Họ và tên": "Nguyễn Thị Ngọc Bích",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25077",
     "Họ và tên": "Vũ Thị Thùy Duyên",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25080",
     "Họ và tên": "Hoàng Thị Phương Hoa",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25105",
     "Họ và tên": "Nguyễn Thị Lan Anh",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25153",
     "Họ và tên": "Lê Phương Nhung",
     "Khoa Phòng": "K. Nhi",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "21275",
     "Họ và tên": "Hoàng Tiến Dũng",
     "Khoa Phòng": "K. Phụ sản",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25022",
     "Họ và tên": "Nguyễn Thị Hằng",
     "Khoa Phòng": "K. Phụ sản",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22314",
     "Họ và tên": "Lê Thị Hằng",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23226",
     "Họ và tên": "Phạm Thị Thanh Xuân",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17080",
     "Họ và tên": "Bùi Thị Hải Yến",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20739",
     "Họ và tên": "Đỗ Thanh Phương",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20673",
     "Họ và tên": "Lê Thị Bảy",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20762",
     "Họ và tên": "Đồng Thị Kim Oanh",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20785",
     "Họ và tên": "Phạm Thị Phương Thảo",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21028",
     "Họ và tên": "Đặng Thị Hải Thùy",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21211",
     "Họ và tên": "Nguyễn Phương Thúy",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22171",
     "Họ và tên": "Nguyễn Thị Tú Linh",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23053",
     "Họ và tên": "Trịnh Thị Thơ",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23169",
     "Họ và tên": "Lê Thanh Thảo",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23166",
     "Họ và tên": "Lê Thị Ngọc",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23235",
     "Họ và tên": "Nguyễn Hải Linh",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22281",
     "Họ và tên": "Lê Diệu Linh",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24177",
     "Họ và tên": "Nguyễn Thị Thanh Mai",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24305",
     "Họ và tên": "Đinh Hiếu Hân",
     "Khoa Phòng": "K. Phụ sản",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25032",
     "Họ và tên": "Lê Huyền Trang",
     "Khoa Phòng": "K. Phụ Sản",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25052",
     "Họ và tên": "Nguyễn Thị Phương Nga",
     "Khoa Phòng": "K. Phụ sản",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25177",
     "Họ và tên": "Trần Ngân Giang",
     "Khoa Phòng": "K. Phụ sản",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "16003",
     "Họ và tên": "Nguyễn Thị Huê",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18133",
     "Họ và tên": "Đào Kim Thoa",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16043",
     "Họ và tên": "Nguyễn Thị Kim Thảo",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20802",
     "Họ và tên": "Đinh Thị Anh",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18042",
     "Họ và tên": "Phùng Thị Lan Trinh",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20519",
     "Họ và tên": "Nguyễn Việt Anh",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20741",
     "Họ và tên": "Lê Thị Mai",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21117",
     "Họ và tên": "Hoàng Văn Vương",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21224",
     "Họ và tên": "Phạm Thu Hằng",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22272",
     "Họ và tên": "Nguyễn Thị Thanh Thư",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24174",
     "Họ và tên": "Nguyễn Thị Ngọc Mai",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25051",
     "Họ và tên": "Liễu Thu Huyền",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25065",
     "Họ và tên": "Nguyễn Thu Trang",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25066",
     "Họ và tên": "Lê Thị Thu Hảo",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25088",
     "Họ và tên": "Ninh Thị Hương",
     "Khoa Phòng": "K. Xét nghiệm",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "18045",
     "Họ và tên": "Chử Thị Anh Thơ",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21130",
     "Họ và tên": "Nguyễn Phúc Hoàn",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25221",
     "Họ và tên": "Đỗ Thị Huyền Trang",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17077",
     "Họ và tên": "Nguyễn Thị Phương",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17054",
     "Họ và tên": "Nguyễn Thị Linh",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21200",
     "Họ và tên": "Nguyễn Viết Út",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22019",
     "Họ và tên": "Nguyễn Văn Tam",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21129",
     "Họ và tên": "Vũ Văn Tuấn",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24275",
     "Họ và tên": "Đỗ Sơn Tùng",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19395",
     "Họ và tên": "Bùi Khánh Ly",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21054",
     "Họ và tên": "Ngô Thị Hồng Ngát",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17074",
     "Họ và tên": "Phạm Quốc Anh",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21198",
     "Họ và tên": "Trần Thị Hoài Thanh",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24132",
     "Họ và tên": "Đặng Bảo Ngọc",
     "Khoa Phòng": "K. CĐHA-TDCN",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "22101",
     "Họ và tên": "Nguyễn Thị Phương",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17082",
     "Họ và tên": "Phạm Ngọc Vũ",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22121",
     "Họ và tên": "Ngô Ngọc Chinh",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "17083",
     "Họ và tên": "Nguyễn Thị Thùy Dương",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20754",
     "Họ và tên": "Nguyễn Thu Huyền",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24047",
     "Họ và tên": "Bùi Thúy Mai",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24240",
     "Họ và tên": "Ngô Khánh Huyền",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24241",
     "Họ và tên": "Nguyễn Thị Thùy Dương",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23163",
     "Họ và tên": "Lê Thị Tuyết Anh",
     "Khoa Phòng": "K. Dược",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "21034",
     "Họ và tên": "Phạm Thị Ngọc Dung",
     "Khoa Phòng": "P. Điều dưỡng - KSNK",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20702",
     "Họ và tên": "Đặng Thị Nghĩa",
     "Khoa Phòng": "P. Điều dưỡng - KSNK",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20797",
     "Họ và tên": "Vũ Thị Bích Thủy",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21056",
     "Họ và tên": "Nguyễn Thị Sen",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20784",
     "Họ và tên": "Đỗ Thị Thu Thủy",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23225",
     "Họ và tên": "Nguyễn Thị Bình",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25037",
     "Họ và tên": "Nguyễn Thị Ngọc Thúy",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25030",
     "Họ và tên": "Đào Thu Hằng",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18064",
     "Họ và tên": "Nguyễn Thị Luyến",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18060",
     "Họ và tên": "Vũ Thị Thu Huyền",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22125",
     "Họ và tên": "Nguyễn Thị Thủy",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22179",
     "Họ và tên": "Nguyễn Thị Huyền",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23016",
     "Họ và tên": "Nguyễn Thị Hoàng Yến",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24156",
     "Họ và tên": "Nguyễn Thị Lan",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24213",
     "Họ và tên": "Nguyễn Thị Hiền",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24051",
     "Họ và tên": "Lê Thị Hường",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23274",
     "Họ và tên": "Đoàn Kim Quy",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24075",
     "Họ và tên": "Nguyễn Thị Hương",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25036",
     "Họ và tên": "Ngô Thị Kim Tuyến",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25027",
     "Họ và tên": "Bùi Thị Thi",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25144",
     "Họ và tên": "Phan Thị Thoan",
     "Khoa Phòng": "BP. KSNK",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "21141",
     "Họ và tên": "Trần Thị Tâm",
     "Khoa Phòng": "P. KHTH&QLCL",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19023",
     "Họ và tên": "Nguyễn Thị Hà",
     "Khoa Phòng": "P. KHTH&QLCL",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24140",
     "Họ và tên": "Ngô Thảo Linh",
     "Khoa Phòng": "P. KHTH&QLCL",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24095",
     "Họ và tên": "Nguyễn Phạm Thùy Linh",
     "Khoa Phòng": "P. KHTH&QLCL",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "19093",
     "Họ và tên": "Lê Hoàng Chiến",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16201",
     "Họ và tên": "Trần Thị Nhung",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18098",
     "Họ và tên": "Phùng Quân Hiếu",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22204",
     "Họ và tên": "Trương Thị Thùy Linh",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20755",
     "Họ và tên": "Hồ Ngọc Điền",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25176",
     "Họ và tên": "Nguyễn Ngọc Duy",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "19489",
     "Họ và tên": "Nguyễn Thị Bích Ngọc",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20531",
     "Họ và tên": "Phạm Tuấn Nguyên",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "16103",
     "Họ và tên": "Trần Thị Thu Hường",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 9
+    "Thâm niên làm tròn": 9,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21081",
     "Họ và tên": "Nguyễn Xuân Hiệu",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22046",
     "Họ và tên": "Nguyễn Thị Hồng Dịu",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20787",
     "Họ và tên": "Lại Thị Châm",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22161",
     "Họ và tên": "Phùng Sinh Vượng",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25098",
     "Họ và tên": "Nguyễn Hải Mạnh",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25141",
     "Họ và tên": "Đặng Quốc Nam",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25218",
     "Họ và tên": "Ngô Minh Hải",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25241",
     "Họ và tên": "Đặng Thị Thúy Hưng",
     "Khoa Phòng": "P. NS-HCQT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "14012",
     "Họ và tên": "Bùi Hạnh Nguyên",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 11
+    "Thâm niên làm tròn": 11,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18085",
     "Họ và tên": "Ngô Thị Hòa",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19389",
     "Họ và tên": "Nguyễn Thị Thu Thủy",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "14086",
     "Họ và tên": "Phạm Thị Vân",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 11
+    "Thâm niên làm tròn": 11,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19247",
     "Họ và tên": "Nguyễn Thị Mai Lan",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20815",
     "Họ và tên": "Nguyễn Thị Thanh Hà",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24094",
     "Họ và tên": "Nguyễn Thị Hà",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22038",
     "Họ và tên": "Đinh Thị Thu Thủy",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20761",
     "Họ và tên": "Nguyễn Thị Thu Hồng",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20766",
     "Họ và tên": "Hoàng Thị Thùy Linh",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22087",
     "Họ và tên": "Nguyễn Thị Thanh Nhàn",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22141",
     "Họ và tên": "Phan Huyền Trang",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22157",
     "Họ và tên": "Hoàng Thị Thanh Hằng",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19230",
     "Họ và tên": "Mai Kim Liên",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20774",
     "Họ và tên": "Nguyễn Thị Thùy Linh",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22167",
     "Họ và tên": "Nguyễn Thị Hồng Yến",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20590",
     "Họ và tên": "Nguyễn Thị Thảo",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24270",
     "Họ và tên": "Lê Thị Hồng Nhung",
     "Khoa Phòng": "P. Tài chính kế toán",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "20013",
     "Họ và tên": "Phan Trọng Tiến",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18106",
     "Họ và tên": "Nguyễn Việt Hưng",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24072",
     "Họ và tên": "Lê Thị Duyên",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23005",
     "Họ và tên": "Hoàng Thị Hồng Nhung",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23007",
     "Họ và tên": "Hoàng Văn Duy",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23015",
     "Họ và tên": "Vũ Văn Huy",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25165",
     "Họ và tên": "Nguyễn Trung Kiên",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25166",
     "Họ và tên": "Trương Quốc Phong",
     "Khoa Phòng": "P. CNTT",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "25076",
     "Họ và tên": "Phạm Thị Thùy Linh",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21133",
     "Họ và tên": "Trần Văn Hợp",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19212",
     "Họ và tên": "Vũ Thu Huyền",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19465",
     "Họ và tên": "Nguyễn Hà Thu",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 6
+    "Thâm niên làm tròn": 6,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20625",
     "Họ và tên": "Nguyễn Tuyết Chinh",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "20710",
     "Họ và tên": "Nguyễn Thanh Mai",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 5
+    "Thâm niên làm tròn": 5,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23209",
     "Họ và tên": "Nguyễn Thị Thu Giang",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "19160",
     "Họ và tên": "Nông Thị Thùy Chi",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23036",
     "Họ và tên": "Nguyễn Thị Ngọc Huyền",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "23147",
     "Họ và tên": "Nghiêm Thị Hằng",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 2
+    "Thâm niên làm tròn": 2,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22151",
     "Họ và tên": "Nguyễn Đức Bình",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24107",
     "Họ và tên": "Lê Mạnh Hùng",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22217",
     "Họ và tên": "Nguyễn Huy Hoàng",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "24276",
     "Họ và tên": "Hoàng Lan Anh",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 1
+    "Thâm niên làm tròn": 1,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25097",
     "Họ và tên": "Lê Quý Long",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "25172",
     "Họ và tên": "Lê Linh Chi",
     "Khoa Phòng": "P. Marketing",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "18110",
     "Họ và tên": "Lê Thị Bích Hương",
     "Khoa Phòng": "P. Kinh doanh 1",
-    "Thâm niên làm tròn": 7
+    "Thâm niên làm tròn": 7,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21119",
     "Họ và tên": "Nguyễn Xuân Thiêm",
     "Khoa Phòng": "P. Kinh doanh 1",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22202",
     "Họ và tên": "Đinh Thị Thu Trang",
     "Khoa Phòng": "P. Kinh doanh 1",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "18109",
     "Họ và tên": "Dương Thị Hồng Nhung",
     "Khoa Phòng": "P. Kinh doanh 1",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "21076",
     "Họ và tên": "Nguyễn Thị Thành",
     "Khoa Phòng": "P. Kinh doanh 2",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22129",
     "Họ và tên": "Lê Thị Minh Ngọc",
     "Khoa Phòng": "P. Kinh doanh 2",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21101",
     "Họ và tên": "Nguyễn Ngọc Hoàn",
     "Khoa Phòng": "P. Kinh doanh 2",
-    "Thâm niên làm tròn": 4
+    "Thâm niên làm tròn": 4,
+    "Đang Trực": true
   },
 
   {
     "Mã NV": "17108",
     "Họ và tên": "Bùi Thị Kim Oanh",
     "Khoa Phòng": "P. Kinh doanh 3",
-    "Thâm niên làm tròn": 8
+    "Thâm niên làm tròn": 8,
+    "Đang Trực": true
   },
   {
     "Mã NV": "21084",
     "Họ và tên": "Phạm Thị Hải Anh",
     "Khoa Phòng": "P. Kinh doanh 3",
-    "Thâm niên làm tròn": 0
+    "Thâm niên làm tròn": 0,
+    "Đang Trực": true
   },
   {
     "Mã NV": "22295",
     "Họ và tên": "Nguyễn Bích Hường",
     "Khoa Phòng": "P. Kinh doanh 3",
-    "Thâm niên làm tròn": 3
+    "Thâm niên làm tròn": 3,
+    "Đang Trực": true
   }
 ]

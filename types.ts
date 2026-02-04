@@ -4,11 +4,15 @@ export interface Participant {
   name: string;
   department: string;
   yearsWorked: number;
+  onDuty?: boolean;
 }
 
 export interface Prize {
   id: string;
   name: string;
+  product?: string;
+  products?: string[]; // Array of products for multi-product prizes
+  value?: string;
   quantity: number;
   minYears: number; // The logic constraint
   imageUrl?: string;
@@ -20,6 +24,8 @@ export interface Winner {
   participantId: string;
   participant: Participant;
   prizeId: string;
+  prizeName: string;
+  prizeProduct?: string;
   timestamp: number;
 }
 

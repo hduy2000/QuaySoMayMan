@@ -2,9 +2,9 @@ import { Participant, Prize } from './types';
 
 // Real data from hospital list
 export const DEFAULT_PARTICIPANTS: Participant[] = [
-  { id: '21042', code: '21042', name: 'Nguyễn Thắng Lợi', department: 'Ban GĐ', yearsWorked: 4 },
-  { id: '20556', code: '20556', name: 'Lưu Quốc Khải', department: 'Ban GĐ', yearsWorked: 5 },
-  { id: '25244', code: '25244', name: 'Nguyễn Thị Ngọc Lan', department: 'Ban GĐ', yearsWorked: 0 },
+  { id: '21042', code: '21042', name: 'Nguyễn Thắng Lợi', department: 'Ban GĐ', yearsWorked: 4, onDuty: false },
+  { id: '20556', code: '20556', name: 'Lưu Quốc Khải', department: 'Ban GĐ', yearsWorked: 5, onDuty: false },
+  { id: '25244', code: '25244', name: 'Nguyễn Thị Ngọc Lan', department: 'Ban GĐ', yearsWorked: 0, onDuty: false },
   { id: '25068', code: '25068', name: 'Trịnh Văn Báu', department: 'BP Kỹ thuật & VTYT', yearsWorked: 0 },
   { id: '18099', code: '18099', name: 'Nguyễn Tiến Bộ', department: 'BP Kỹ thuật & VTYT', yearsWorked: 7 },
   { id: '18100', code: '18100', name: 'Vương Xuân Hải', department: 'BP Kỹ thuật & VTYT', yearsWorked: 7 },
@@ -297,32 +297,34 @@ export const DEFAULT_PARTICIPANTS: Participant[] = [
 export const DEFAULT_PRIZES: Prize[] = [
   { 
     id: 'p_mayman', 
-    name: 'GIẢI MAY MẮN', 
-    quantity: 12, 
-    minYears: 0,
-    color: 'from-blue-500 to-blue-700'
+    name: 'GIẢI GẮN KẾT YÊU THƯƠNG', 
+    products: [
+      'Máy vắt cam Elmich 700ml',
+      'Nồi cơm điện Panasonic 1 lít',
+      'Máy sấy tóc tạo ion Panasonic',
+      'Bàn là hơi nước cầm tay Panasonic',
+      'Nồi áp suất điện đa năng Sunhouse 6 lít',
+      'Bếp từ đơn Sunhouse',
+      'Nồi lẩu điện đa năng Magic',
+      'Ấm siêu tốc Smartcook 1.5 lít',
+      'Nồi chiên không dầu Sunhouse 6.5 lít',
+      'Bộ nồi 5 đáy Inox 304 Elmich Berlin',
+      'Máy xay sinh tố Sunhouse',
+      'Quạt sưởi gốm Fujihome',
+      'Lò nướng Kangaroo 32 lít',
+      'Bàn là hơi nước Panasonic',
+      'Chảo chống dính siêu bền Elmich',
+      'Đồng hồ treo tường'
+    ],
+    quantity: 16, 
+    minYears: 0, 
+    color: 'from-blue-500 to-blue-700' 
   },
-  { 
-    id: 'p_nhi', 
-    name: 'GIẢI NHÌ', 
-    quantity: 1, 
-    minYears: 1,
-    color: 'from-green-600 to-green-800'
-  },
-  { 
-    id: 'p_nhat', 
-    name: 'GIẢI NHẤT', 
-    quantity: 1, 
-    minYears: 3,
-    color: 'from-yellow-400 to-yellow-600'
-  },
-  { 
-    id: 'p_dacbiet', 
-    name: 'GIẢI ĐẶC BIỆT', 
-    quantity: 1, 
-    minYears: 4,
-    color: 'from-red-600 to-red-800'
-  },
+  { id: 'p_nhi', name: 'GIẢI ĐỒNG HÀNH BỀN VỮNG', product: 'Máy lọc không khí Elmich', value: '3.000.000đ', quantity: 1, minYears: 1, color: 'from-green-600 to-green-800', imageUrl: 'images/2.png' },
+  { id: 'p_nhat', name: 'GIẢI CỐNG HIẾN TỎA SÁNG', product: 'Máy hút bụi Panasonic', value: '5.000.000đ', quantity: 1, minYears: 3, color: 'from-yellow-400 to-yellow-600', imageUrl: 'images/1.png' },
+  { id: 'p_dacbiet', name: 'GIẢI SỨ MỆNH VÀNG', product: 'Smart Tivi Samsung 4K 50 inch', value: '11.000.000đ', quantity: 1, minYears: 4, color: 'from-red-600 to-red-800', imageUrl: 'images/0.png' },
 ];
 
 export const STORAGE_KEY = 'bacha_yep_lucky_draw_2025';
+
+export const DEFAULT_EVENT_TITLE = 'BỆNH VIỆN ĐA KHOA QUỐC TẾ BẮC HÀ - YEP 2026';

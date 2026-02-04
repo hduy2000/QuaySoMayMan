@@ -1,28 +1,155 @@
 [
   {
-    "id": "p_mayman",
-    "name": "GIẢI MAY MẮN",
-    "quantity": 12,
+    "id": "p_mayman_1",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Máy vắt cam Elmich 700ml",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_2",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Nồi cơm điện Panasonic 1 lít",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_3",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Máy sấy tóc tạo ion Panasonic",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_4",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Bàn là hơi nước cầm tay Panasonic",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_5",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Nồi áp suất điện đa năng Sunhouse 6 lít",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_6",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Bếp từ đơn Sunhouse",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_7",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Nồi lẩu điện đa năng Magic",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_8",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Ấm siêu tốc Smartcook 1.5 lít",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_9",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Nồi chiên không dầu Sunhouse 6.5 lít",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_10",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Bộ nồi 5 đáy Inox 304 Elmich Berlin",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_11",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Máy xay sinh tố Sunhouse",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_12",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Quạt sưởi gốm Fujihome",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_13",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Lò nướng Kangaroo 32 lít",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_14",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Bàn là hơi nước Panasonic",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_15",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Chảo chống dính siêu bền Elmich",
+    "quantity": 1,
+    "minYears": 0,
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "id": "p_mayman_16",
+    "name": "GIẢI GẮN KẾT YÊU THƯƠNG",
+    "product": "Đồng hồ treo tường",
+    "quantity": 1,
     "minYears": 0,
     "color": "from-blue-500 to-blue-700"
   },
   {
     "id": "p_nhi",
-    "name": "GIẢI NHÌ",
+    "name": "GIẢI ĐỒNG HÀNH BỀN VỮNG",
+    "product": "Máy lọc không khí Elmich",
+    "value": "3.000.000đ",
     "quantity": 1,
     "minYears": 1,
     "color": "from-green-600 to-green-800"
   },
   {
     "id": "p_nhat",
-    "name": "GIẢI NHẤT",
+    "name": "GIẢI CỐNG HIẾN TỎA SÁNG",
+    "product": "Máy hút bụi Panasonic",
+    "value": "5.000.000đ",
     "quantity": 1,
     "minYears": 3,
     "color": "from-yellow-400 to-yellow-600"
   },
   {
     "id": "p_dacbiet",
-    "name": "GIẢI ĐẶC BIỆT",
+    "name": "GIẢI SỨ MỆNH VÀNG",
+    "product": "Smart Tivi Samsung 4K 50 inch",
+    "value": "11.000.000đ",
     "quantity": 1,
     "minYears": 4,
     "color": "from-red-600 to-red-800"
