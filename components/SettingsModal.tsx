@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Participant, Prize, Winner } from '../types';
-import { X, Trash2, Upload, RotateCcw, Save, Keyboard, FileJson, Image } from 'lucide-react';
+import { X, Trash2, Upload, RotateCcw, Save, Keyboard, FileJson, Image, Search } from 'lucide-react';
 import { DEFAULT_PARTICIPANTS, DEFAULT_PRIZES } from '../constants';
 
 interface SettingsModalProps {
@@ -21,6 +21,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'participants' | 'prizes' | 'winners'>('participants');
   const [importText, setImportText] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   if (!isOpen) return null;
 
@@ -84,7 +85,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   const loadFromJSON = async () => {
     try {
-      const response = await fetch('/list/nhanvien.json');
+      const response = await fetch('list/nhanvien.json');
       const jsonData = await response.json();
       const newParticipants = jsonData.map((item: any) => ({
         id: item['Mã NV'],
@@ -213,6 +214,38 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 <div className="bg-blue-50 border border-blue-200 p-3 rounded text-xs text-blue-700 mb-3">
                   <strong>📌 Lưu ý:</strong> Người đã trúng giải sẽ <strong>KHÔNG</strong> được quay lại ở bất cứ giải nào. Bạn có thể xóa người tham gia bằng nút <Trash2 className="inline" size={12}/> bên phải.
                 </div>
+                
+                {/* Search Box */}
+                <div className="mb-3">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    <input 
+                      type="text" 
+                      placeholder="Tìm kiếm theo tên, mã NV, khoa phòng..." 
+                      className="w-full pl-10 pr-4 py-2 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yep-red focus:border-transparent text-sm"
+                      value={searchTerm}
+                      onChange={e => setSearchTerm(e.target.value)}
+                    />
+                    {searchTerm && (
+                      <button 
+                        onClick={() => setSearchTerm('')}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        <X size={16} />
+                      </button>
+                    )}
+                  </div>
+                  {searchTerm && (
+                    <p className="text-xs text-gray-500 mt-1">
+                      Tìm thấy {participants.filter(p => 
+                        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        p.department.toLowerCase().includes(searchTerm.toLowerCase())
+                      ).length} kết quả
+                    </p>
+                  )}
+                </div>
+
                 <div className="max-h-60 overflow-y-auto">
                   <table className="w-full text-sm text-left">
                     <thead className="bg-gray-50 text-gray-500 sticky top-0">
@@ -227,7 +260,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       </tr>
                     </thead>
                     <tbody>
-                      {participants.map(p => {
+                      {participants.filter(p => 
+                        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        p.department.toLowerCase().includes(searchTerm.toLowerCase())
+                      ).map(p => {
                         const hasWon = winners.some(w => w.participantId === p.id);
                         return (
                           <tr key={p.id} className={`border-b hover:bg-gray-50 ${hasWon ? 'bg-green-50' : ''}`}>

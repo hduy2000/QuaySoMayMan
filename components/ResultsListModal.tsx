@@ -27,8 +27,8 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       // Convert prizeId to prizeName if needed
-      if (initialSelectedPrizeId && initialSelectedPrizeId !== 'all') {
-        const prize = prizes.find(p => p.id === initialSelectedPrizeId);
+      if (initialSelectedPrizeId && initialSelectedPrizeId !== "all") {
+        const prize = prizes.find((p) => p.id === initialSelectedPrizeId);
         setSelectedPrizeId(prize?.name || initialSelectedPrizeId);
       } else {
         setSelectedPrizeId(initialSelectedPrizeId || "all");
@@ -46,28 +46,24 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
   );
 
   // 2. Sort by prize order
-  const prizeNameOrder = [
-    "GIẢI SỨ MỆNH VÀNG",
-    "GIẢI CỐNG HIẾN TOẢ SÁNG",
-    "GIẢI ĐỒNG HÀNH BỀN VỮNG",
-    "GIẢI GẮN KẾT YÊU THƯƠNG"
-  ];
+  const prizeOrder: Record<string, number> = {
+    p_dacbiet: 1,
+    p_nhat: 2,
+    p_nhi: 3,
+    p_mayman: 4,
+  };
   const sortedWinners = searchedWinners.sort((a, b) => {
-    // Fallback: get prizeName from prize if winner doesn't have it
-    const prizeA = prizes.find(p => p.id === a.prizeId);
-    const prizeB = prizes.find(p => p.id === b.prizeId);
-    const prizeAName = a.prizeName || prizeA?.name || '';
-    const prizeBName = b.prizeName || prizeB?.name || '';
-    const prizeAIndex = prizeNameOrder.indexOf(prizeAName);
-    const prizeBIndex = prizeNameOrder.indexOf(prizeBName);
-    return prizeAIndex - prizeBIndex;
+    return (prizeOrder[a.prizeId] || 999) - (prizeOrder[b.prizeId] || 999);
   });
 
   // 3. Group winners by prize name for filter buttons
-  const prizeGroups = new Map<string, { name: string; count: number; color: string }>();
+  const prizeGroups = new Map<
+    string,
+    { name: string; count: number; color: string; prizeId: string }
+  >();
   winners.forEach((w) => {
-    const prize = prizes.find(p => p.id === w.prizeId);
-    const prizeName = w.prizeName || prize?.name || 'Unknown';
+    const prize = prizes.find((p) => p.id === w.prizeId);
+    const prizeName = w.prizeName || prize?.name || "Unknown";
     const existing = prizeGroups.get(prizeName);
     if (existing) {
       existing.count++;
@@ -75,7 +71,8 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
       prizeGroups.set(prizeName, {
         name: prizeName,
         count: 1,
-        color: prize?.color || 'from-gray-400 to-gray-600'
+        color: prize?.color || "from-gray-400 to-gray-600",
+        prizeId: w.prizeId,
       });
     }
   });
@@ -85,11 +82,11 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
     selectedPrizeId === "all"
       ? sortedWinners
       : sortedWinners.filter((w) => {
-          const prize = prizes.find(p => p.id === w.prizeId);
-          const prizeName = w.prizeName || prize?.name || '';
+          const prize = prizes.find((p) => p.id === w.prizeId);
+          const prizeName = w.prizeName || prize?.name || "";
           return prizeName === selectedPrizeId;
         });
-
+  console.log("Displayed Winners:", displayedWinners);
   const handleDelete = (id: string, name: string) => {
     Swal.fire({
       title: "Bạn có chắc chắn?",
@@ -183,17 +180,20 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
               Tất cả ({winners.length})
             </button>
             {Array.from(prizeGroups.entries())
-              .sort((a, b) => prizeNameOrder.indexOf(a[0]) - prizeNameOrder.indexOf(b[0]))
+              .sort(
+                (a, b) =>
+                  (prizeOrder[a[1].prizeId] || 999) - (prizeOrder[b[1].prizeId] || 999),
+              )
               .map(([prizeName, group]) => {
-              return (
-                <button
-                  key={prizeName}
-                  onClick={() => setSelectedPrizeId(prizeName)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === prizeName ? "bg-yep-red text-white shadow" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}`}>
-                  {prizeName} ({group.count})
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={prizeName}
+                    onClick={() => setSelectedPrizeId(prizeName)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-bold transition ${selectedPrizeId === prizeName ? "bg-yep-red text-white shadow" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}`}>
+                    {prizeName} ({group.count})
+                  </button>
+                );
+              })}
           </div>
         </div>
 
@@ -275,7 +275,9 @@ export const ResultsListModal: React.FC<ResultsListModalProps> = ({
                         </div>
                       </td>
                       <td className="p-4 text-gray-600 text-sm">
-                        {w.prizeProduct || prize?.product || <span className="text-gray-400 italic">-</span>}
+                        {w.prizeProduct || prize?.product || (
+                          <span className="text-gray-400 italic">-</span>
+                        )}
                       </td>
                       <td className="p-4 text-center">
                         <button

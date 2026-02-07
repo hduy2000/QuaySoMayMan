@@ -27,11 +27,11 @@ import {
 
 // AUDIO CONFIGURATION
 const AUDIO_PATHS = {
-  COMING: "/sounds/nhac.mp3", // game-sm-jackpot-coming (Nhạc nền quay)
-  ROLLER: "/sounds/sm-roller-loop.mp3", // sm-roller-loop (Số cuối)
-  WIN: "/sounds/game-sm-jackpot-win.mp3", // game-sm-jackpot-win (Chốt giải)
-  CHEER: "/sounds/crowd-cheer-in-school.mp3", // cheer (Bắn pháo hoa)
-  CLICK: "/sounds/sm-bet.mp3", // Tiếng tạch tạch khi từng số dừng
+  COMING: "sounds/game-sm-jackpot-coming.mp3", // game-sm-jackpot-coming (Nhạc nền quay)
+  ROLLER: "sounds/sm-roller-loop.mp3", // sm-roller-loop (Số cuối)
+  WIN: "sounds/game-sm-jackpot-win.mp3", // game-sm-jackpot-win (Chốt giải)
+  CHEER: "sounds/crowd-cheer-in-school.mp3", // cheer (Bắn pháo hoa)
+  CLICK: "sounds/sm-bet.mp3", // Tiếng tạch tạch khi từng số dừng
 };
 
 const App: React.FC = () => {
@@ -523,7 +523,7 @@ const App: React.FC = () => {
     <div className="min-h-screen font-sans text-white relative overflow-hidden flex flex-col">
       {/* --- Logo --- */}
       <img
-        src="/images/logo.png"
+        src="images/logo.png"
         alt="Logo"
         className="absolute top-6 left-6 z-50 h-32 w-32"
       />
@@ -531,7 +531,7 @@ const App: React.FC = () => {
       {/* --- Background Image --- */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-        style={{ backgroundImage: "url(/images/banner.png)" }}>
+        style={{ backgroundImage: "url(images/banner.png)" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
       </div>
 
@@ -734,7 +734,7 @@ const App: React.FC = () => {
                 <div
                   key={w.id}
                   className="flex-shrink-0 bg-white/90 rounded px-3 py-1.5 min-w-[140px] border border-gray-200 flex flex-col justify-center animate-in fade-in slide-in-from-right-4 duration-300 shadow-sm">
-                  <div className="font-bold text-xs text-gray-900 truncate flex items-center gap-1">
+                  <div className="font-bold text-md text-red-900 truncate flex items-center gap-1">
                     {w.participant.onDuty && (
                       <span className="text-red-600" title="Đang trực">
                         ⚕️
@@ -743,15 +743,15 @@ const App: React.FC = () => {
                     {w.participant.name}
                   </div>
                   {w.prizeProduct && (
-                    <div className="text-[9px] text-blue-600 font-medium truncate mt-0.5">
+                    <div className="text-[12px] text-blue-600 font-medium truncate mt-0.5">
                       {w.prizeProduct}
                     </div>
                   )}
                   <div className="flex justify-between items-center mt-0.5">
-                    <span className="text-[10px] text-red-600 font-bold">
+                    {/* <span className="text-[10px] text-red-600 font-bold">
                       {currentPrize.name}
-                    </span>
-                    <span className="text-[10px] text-gray-600 font-mono">
+                    </span> */}
+                    <span className="text-[16px] text-gray-600 font-bold">
                       {w.participant.code}
                     </span>
                   </div>

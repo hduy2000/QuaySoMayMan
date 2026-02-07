@@ -52,9 +52,9 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
       // --- Sound Effect Logic ---
       let soundSrc: string | null = null;
       if (prize.id === "p_dacbiet") {
-        soundSrc = "/sounds/game-sm-jackpot-win.mp3";
+        soundSrc = "sounds/game-sm-jackpot-win.mp3";
       } else if (prize.id === "p_nhat" || prize.id === "p_nhi") {
-        soundSrc = "/sounds/game-tada.mp3";
+        soundSrc = "sounds/game-tada.mp3";
       }
 
       if (soundSrc) {
@@ -63,7 +63,7 @@ export const CelebrationModal: React.FC<CelebrationModalProps> = ({
         // Optional: Play a cheer sound for the grand prize
         if (prize.id === "p_dacbiet") {
           setTimeout(() => {
-            const cheer = new Audio("/sounds/crowd-cheer-in-school.mp3");
+            const cheer = new Audio("sounds/crowd-cheer-in-school.mp3");
             cheer.volume = 0.5;
             cheer.play();
           }, 1000);
